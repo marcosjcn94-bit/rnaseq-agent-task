@@ -5,5 +5,9 @@
     "R":  "4.5.2",
     "verified_at":  "2026-10-04",
     "airway":  "1.30.0",
-    "DESeq2":  "1.50.2"
+    "DESeq2":  "1.50.2",
+    "validated_r_image_id":  "sha256:ad8eb7fc6c64ca4fc5535e50034db232822c0de4b5ba82ce1e214d6735736c58",
+    "scientific_python_image_id":  "sha256:5d61a9a0192f6a4128a5b135ac833ee94c65b0027142d8b34857760e64560eec",
+    "final_ci_image_id":  "sha256:4a0c28c913eb937bece661f05d26389a0f3a7222857500804f57f78013f4347d",
+    "participant_image_id":  "sha256:dc7aa8d4f631ae78c5c229a91f0fc5cfda8c07d70492bcd03cb630d8312d24dc"
 }

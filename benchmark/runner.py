@@ -60,6 +60,8 @@ def execute(source, output, receipt, image="rnaseq-participant:validated", timeo
             exit_code=int(inspection["State"]["ExitCode"]),
             network_mode=inspection["HostConfig"]["NetworkMode"],
             read_only_root=inspection["HostConfig"]["ReadonlyRootfs"],
+            user=inspection["Config"]["User"],
+            limits={"memory_bytes":inspection["HostConfig"]["Memory"],"nano_cpus":inspection["HostConfig"]["NanoCpus"],"pids":inspection["HostConfig"]["PidsLimit"]},
             source_unchanged=source_hashes(source)==before,
             mounts=[{"destination":m["Destination"],"read_write":m["RW"]} for m in inspection["Mounts"]],
             output_hashes=output_hashes(output),
@@ -76,14 +78,6 @@ def execute(source, output, receipt, image="rnaseq-participant:validated", timeo
         write_json(receipt,record)
         subprocess.run(["docker","rm","--force",container],capture_output=True,check=True)
     return record
-
-def main():
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--source",required=True); parser.add_argument("--output",required=True)
-    parser.add_argument("--receipt",required=True); parser.add_argument("--image",default="rnaseq-participant:validated")
-    args = parser.parse_args()
-    result = execute(args.source,args.output,args.receipt,args.image)
-    print(json.dumps(result,indent=2))
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)

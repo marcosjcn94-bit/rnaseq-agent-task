@@ -1,0 +1,6 @@
+{"input_read_only": true, "source_read_only": true, "root_read_only": true, "network_unreachable": true, "docker_socket_absent": true}
+
+Traceback (most recent call last):
+  File "/submission/analyze.py", line 27, in <module>
+    raise RuntimeError("intentional failure: evaluator must not report success")
+RuntimeError: intentional failure: evaluator must not report success

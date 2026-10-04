@@ -1,0 +1,66 @@
+{
+  "code_hashes": {
+    "__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "analysis.py": "a3c31808c8282178f82c868acc52ded7a342a8cff3244e4de52a0d23ce492bc0",
+    "cli.py": "13b0e6fc221706a64e3d6a463695bc188edeca53b9098b47d8b68a4d2053ed25",
+    "compare.py": "9b1118743ce8faf1d8bf372ac51e9552e3f3362be2faffa36c9559ceaa669ff3",
+    "contracts.py": "fde0953e30dcd4aea38515b65576e660b6dae8027a7329865a499fa85acd649d",
+    "data.py": "fbe270f30905e355a9e7ee54217edd4c9fb8c1b7e65aace8bc6412497602cd36",
+    "report.py": "661c5b99bd431fb74e58bbd807118a6598819f34b90274e032ad60fa4d4299f7"
+  },
+  "completed_at": "2026-10-04T14:49:37.006201+00:00",
+  "docker_image_id": "sha256:5d61a9a0192f6a4128a5b135ac833ee94c65b0027142d8b34857760e64560eec",
+  "elapsed_seconds": 122.28824056200028,
+  "files": {
+    "analysis_summary.json": "627766d7975ceafeefb0d31f50abb241b533ef53e490c609f65a53e9f6d606f1",
+    "differential_expression.csv": "740a5d61531ecb7b236a2a42601a0914fdc33db1bf5a804434dd87b316577363",
+    "figures/heatmap.png": "1567767ebce7f2e713623c09936400a1c6173904b0753352f639a58a5e8fd274",
+    "figures/library_sizes.png": "122d15b5cf7071b8576b96cf6f778339f7491370fe6ba46103a0b568f6d5aa55",
+    "figures/pca.png": "8958cf005bd4a19c05d7f5b8a2d4d44717309db50c50aff2cf6da866d8b4de37",
+    "figures/volcano.png": "ed0edb7442a3532002d2edef428977ee6603b7189680ba92cc89c8666a489d2e",
+    "gene_filter.csv": "2eaf88fad5fb3310c4f13439841d17ead82fb152ceed20f9ac6216febf1e1296",
+    "normalized_counts.csv": "d9c7f53dae5a7929463d1ab5d56463d13ba30cd3ce5fca84dae27d44e7708197",
+    "qc.json": "a8782fad5444759dd6b926e619ebfb01ac088fcb97e7dccc28d074e8f33b1e9e"
+  },
+  "input_hashes": {
+    "counts.csv": "69d93e59052f921cea64b82f9b207aebde9d6b9532a9d12cdba4a06ad5391736",
+    "manifest.json": "3def7922efae3854424526747a8369612ef10898204f7afefcf65f294272183f",
+    "metadata.csv": "285c9bb58ac5ccef7345906158d3f2f4f88a0c0489e939d8fd639fa02c7bbc8d"
+  },
+  "memory_scope": "parent process peak RSS; excludes worker processes",
+  "parameters": {
+    "alpha": 0.05,
+    "contrast": [
+      "condition",
+      "treated",
+      "control"
+    ],
+    "cooks_filter": true,
+    "design": "~ donor + condition",
+    "fit_type": "parametric",
+    "heatmap_genes": 20,
+    "independent_filter": true,
+    "lfc_highlight": 1,
+    "min_count": 10,
+    "min_replicates": 7,
+    "min_samples": 4,
+    "n_cpus": 2,
+    "pca_genes": 500,
+    "refit_cooks": true,
+    "schema_version": 1,
+    "size_factors_fit_type": "ratio"
+  },
+  "peak_parent_rss_mb": 327.02734375,
+  "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.36",
+  "python": "3.11.17",
+  "schema_version": 1,
+  "status": "success",
+  "versions": {
+    "matplotlib": "3.11.2",
+    "numpy": "2.4.6",
+    "pandas": "2.3.3",
+    "pydeseq2": "0.5.4",
+    "scikit-learn": "1.9.1",
+    "scipy": "1.17.1"
+  }
+}

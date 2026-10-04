@@ -8,5 +8,6 @@ results/
 figures/
 benchmark/gold/
 reference/output/
+reference/final-output/
 *.egg-info/
 PLUGINS-SKILLS-CODEX.md

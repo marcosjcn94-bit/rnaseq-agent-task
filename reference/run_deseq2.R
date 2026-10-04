@@ -32,6 +32,10 @@ write.csv(data.frame(gene_id=rownames(dds),counts(dds,normalized=TRUE),check.nam
 packages <- as.data.frame(installed.packages()[,c("Package","Version")])
 write.csv(packages,file.path(out,"packages.csv"),row.names=FALSE)
 jsonlite::write_json(list(design=config$design,contrast=config$contrast,parameters=config,
+ input_hashes=list(counts=digest::digest(file=file.path(input,"counts.csv"),algo="sha256"),metadata=digest::digest(file=file.path(input,"metadata.csv"),algo="sha256")),
+ config_hash=digest::digest(file=args[3],algo="sha256"),
+ result_hash=digest::digest(file=file.path(out,"differential_expression.csv"),algo="sha256"),
+ docker_image_id=Sys.getenv("RNASEQ_IMAGE_ID"),
  genes_input=length(keep),genes_tested=sum(keep),significant=sum(res$padj<.05,na.rm=TRUE),
  elapsed_seconds=proc.time()[["elapsed"]]-started,
  DESeq2_version=as.character(packageVersion("DESeq2")),R_version=R.version.string,

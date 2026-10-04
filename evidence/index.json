@@ -1,0 +1,35 @@
+{
+  "files": {
+    "analysis-summary.json": "627766d7975ceafeefb0d31f50abb241b533ef53e490c609f65a53e9f6d606f1",
+    "grade-correct.json": "e5a3b0c026c034ffa64bad45df5e4617ed8aa988144977a601f8acb43ba486b7",
+    "grade-reversed.json": "f9c9a8d5045fe52a05101763ba5a4963e32ae0a8b71c34573e766e018fa5a186",
+    "grade-unpaired.json": "1775853e474e4e81e078b57e3d1020e1f58f17b209e4d14fb4c0cd6568624a8e",
+    "isolation-failure.log": "3ac3c4ddcc7257279e41d20e236fff1e443e16ff0330cd745a3d4b0aaaa9575d",
+    "participant-isolation.json": "86fb2def267e563aab7bca34995acd774dc7b33b654ddc78f7c400b14b68fdc9",
+    "pip-check.log": "af53b0c9c8e73017dafbcbff44fce58574ae6537e30f7b2de7c84dd27ba7c97a",
+    "qc.json": "a8782fad5444759dd6b926e619ebfb01ac088fcb97e7dccc28d074e8f33b1e9e",
+    "receipt-correct.json": "379cd1149bd9431a9bc4b85d7ec7719a3bef511aad0eb082e5183f66371dbed6",
+    "receipt-failure.json": "4eea4505c87d8407deb359cefcfea583ab3ec0e5f4bcf996726efca15035706a",
+    "receipt-reversed.json": "02b091df2800d39cebd81972a338fae43ebe386414dcf1b99fb96569ee863204",
+    "receipt-unpaired.json": "79874a895ec47d51c2e88203bab443f7720644b3cd8a2de7c0a6759f4c175092",
+    "reference-run.json": "48b7608a78f9bb3ea9038cde3b301d828c2f4de88d8b0ea5e932487259865e45",
+    "reproduction.json": "106766bb5be2c384178cbf3aaae14903a93bc390c404a41de1bbeaa00467400a",
+    "run-1.json": "722de84490ad8a098f785cb02637cce0cb95aeb30a63458bb7cddbadf832f63d",
+    "run-2.json": "33cc7575a0889da7b857282406792edbb98f36d9a8f9fc787ddee158ae0a5579",
+    "scientific-audit.json": "d5eef0c5770317db2aa04c8ad370c7ac6fa204c7e3dd16b60fc6ffdc4cc70651",
+    "tests.log": "f997c5311ddfd38f528011c775c317449be4446bfb8db615dcefc3c4302803f6"
+  },
+  "final_runs": [
+    {
+      "elapsed_seconds": 122.28824056200028,
+      "peak_parent_rss_mb": 327.02734375
+    },
+    {
+      "elapsed_seconds": 129.835111333,
+      "peak_parent_rss_mb": 329.8984375
+    }
+  ],
+  "schema_version": 1,
+  "scientific_image_id": "sha256:5d61a9a0192f6a4128a5b135ac833ee94c65b0027142d8b34857760e64560eec",
+  "scope": "local computational evidence; no external scientist or user interview verification"
+}

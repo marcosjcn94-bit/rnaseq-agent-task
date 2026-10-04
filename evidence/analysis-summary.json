@@ -1,0 +1,66 @@
+{
+  "config_hash": "aacf67677835b98e8cdfd4daf9c55ee810d49f07a0825839165766274c5255cb",
+  "contrast": [
+    "condition",
+    "treated",
+    "control"
+  ],
+  "design": "~ donor + condition",
+  "downregulated": 1775,
+  "genes_input": 63677,
+  "genes_removed": 47538,
+  "genes_tested": 16139,
+  "highlight": 957,
+  "input_hashes": {
+    "counts.csv": "69d93e59052f921cea64b82f9b207aebde9d6b9532a9d12cdba4a06ad5391736",
+    "manifest.json": "3def7922efae3854424526747a8369612ef10898204f7afefcf65f294272183f",
+    "metadata.csv": "285c9bb58ac5ccef7345906158d3f2f4f88a0c0489e939d8fd639fa02c7bbc8d"
+  },
+  "lfc_shrinkage": false,
+  "missing_padj": 0,
+  "missing_pvalue": 0,
+  "model": {
+    "design_columns": [
+      "Intercept",
+      "donor[T.N061011]",
+      "donor[T.N080611]",
+      "donor[T.N61311]",
+      "condition[T.treated]"
+    ],
+    "design_rank": 5,
+    "effective_dispersion_fit": "parametric",
+    "lfc_scale": "log2; unshrunk; treated/control",
+    "residual_degrees_of_freedom": 3,
+    "size_factors": {
+      "SRR1039508": 1.0219766186256234,
+      "SRR1039509": 0.8960715952374331,
+      "SRR1039512": 1.1739790049905179,
+      "SRR1039513": 0.6683682556094077,
+      "SRR1039516": 1.1753681226709862,
+      "SRR1039517": 1.39926131153309,
+      "SRR1039520": 0.9165166609457623,
+      "SRR1039521": 0.9450646907772758
+    },
+    "warnings": [
+      "As the residual degrees of freedom is less than 3, the distribution of log dispersions is especially asymmetric and likely to be poorly estimated by the MAD."
+    ]
+  },
+  "na_reasons": {
+    "none": 16139
+  },
+  "prefilter": {
+    "min_count": 10,
+    "min_samples": 4
+  },
+  "schema_version": 1,
+  "significant": 3879,
+  "upregulated": 2104,
+  "versions": {
+    "matplotlib": "3.11.2",
+    "numpy": "2.4.6",
+    "pandas": "2.3.3",
+    "pydeseq2": "0.5.4",
+    "scikit-learn": "1.9.1",
+    "scipy": "1.17.1"
+  }
+}

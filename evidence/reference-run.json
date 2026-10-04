@@ -1,0 +1,46 @@
+{
+  "design": "~ donor + condition",
+  "contrast": ["condition", "treated", "control"],
+  "parameters": {
+    "schema_version": 1,
+    "min_count": 10,
+    "min_samples": 4,
+    "design": "~ donor + condition",
+    "contrast": ["condition", "treated", "control"],
+    "alpha": 0.05,
+    "lfc_highlight": 1,
+    "fit_type": "parametric",
+    "size_factors_fit_type": "ratio",
+    "refit_cooks": true,
+    "min_replicates": 7,
+    "cooks_filter": true,
+    "independent_filter": true,
+    "n_cpus": 2,
+    "pca_genes": 500,
+    "heatmap_genes": 20
+  },
+  "input_hashes": {
+    "counts": "69d93e59052f921cea64b82f9b207aebde9d6b9532a9d12cdba4a06ad5391736",
+    "metadata": "285c9bb58ac5ccef7345906158d3f2f4f88a0c0489e939d8fd639fa02c7bbc8d"
+  },
+  "config_hash": "aacf67677835b98e8cdfd4daf9c55ee810d49f07a0825839165766274c5255cb",
+  "result_hash": "c54635479f70abf5ac1a8ed2eb676e991fe9e4a73d8803ec298b572d36a37ef5",
+  "docker_image_id": "sha256:ad8eb7fc6c64ca4fc5535e50034db232822c0de4b5ba82ce1e214d6735736c58",
+  "genes_input": 63677,
+  "genes_tested": 16139,
+  "significant": 4081,
+  "elapsed_seconds": 43.022,
+  "DESeq2_version": "1.50.2",
+  "R_version": "R version 4.5.2 (2025-10-31)",
+  "size_factors": {
+    "SRR1039508": 1.022,
+    "SRR1039509": 0.8961,
+    "SRR1039512": 1.174,
+    "SRR1039513": 0.6684,
+    "SRR1039516": 1.1754,
+    "SRR1039517": 1.3993,
+    "SRR1039520": 0.9165,
+    "SRR1039521": 0.9451
+  },
+  "effective_fit": "parametric"
+}

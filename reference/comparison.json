@@ -1,0 +1,22 @@
+{
+  "candidate_sha256": "740a5d61531ecb7b236a2a42601a0914fdc33db1bf5a804434dd87b316577363",
+  "finite_log2fc_pairs": 16139,
+  "genes": 16139,
+  "missingness_disagreements": {
+    "padj": 313,
+    "pvalue": 0
+  },
+  "padj_threshold_disagreements": 308,
+  "pvalue_threshold_disagreements": 297,
+  "reference_sha256": "c54635479f70abf5ac1a8ed2eb676e991fe9e4a73d8803ec298b572d36a37ef5",
+  "sign_agreement": 1.0,
+  "spearman_log2fc": 0.9999944125898276,
+  "spearman_padj": 0.9986299684954179,
+  "spearman_pvalue": 0.9986607690238459,
+  "status": "pass",
+  "strong_reference_genes": 852,
+  "thresholds": {
+    "sign_agreement": 0.95,
+    "spearman_log2fc": 0.95
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "approved": false,
+  "automatic_score": 85,
+  "critical_failures": [],
+  "details": {},
+  "execution_verified": true,
+  "human_review_completed": false,
+  "human_score": null,
+  "numeric_tolerance": {
+    "atol": 1e-08,
+    "rtol": 1e-06
+  },
+  "points": {
+    "artifacts": 15,
+    "design_contrast": 25,
+    "integrity_provenance": 20,
+    "numeric_agreement": 25
+  },
+  "status": "pending_human_review"
+}

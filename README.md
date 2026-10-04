@@ -39,9 +39,9 @@ QC covers count matrices only. PCA uses log2(normalized counts+1) over up to 500
 
 ## Results and validation
 
-Initial validated analysis retained 16,139 of 63,677 genes; Python found 3,879 significant genes (2,104 up / 1,775 down), with 957 exploratory highlights. The independent R run found 4,081 significant genes. Effect-size Spearman was 0.9999944, and direction agreement was 100% over 852 strong reference genes.
+The final validated analysis retained 16,139 of 63,677 genes; Python found 3,879 significant genes (2,104 up / 1,775 down), with 957 exploratory highlights. The independent R run found 4,081 significant genes. Effect-size Spearman was 0.9999944, and direction agreement was 100% over 852 strong reference genes.
 
-These are concordant effect estimates, **not identical statistical results**: 308 significance classifications differ, and R has 313 adjusted p-values missing through independent filtering. See [reference/VALIDATION.md](reference/VALIDATION.md), [comparison.json](reference/comparison.json) and [docs/INTERPRETATION.md](docs/INTERPRETATION.md). Final measured reproduction evidence is in [evidence/](evidence/).
+These are concordant effect estimates, **not identical statistical results**: 308 significance classifications differ, and R has 313 adjusted p-values missing through independent filtering. See [reference/VALIDATION.md](reference/VALIDATION.md), [comparison.json](reference/comparison.json) and [docs/INTERPRETATION.md](docs/INTERPRETATION.md). Two final offline runs returned identical tables (also within rtol=1e-6, atol=1e-8) in 122.29 and 129.84 seconds; parent peak RSS was 327.03 and 329.90 MiB. These timings reflect this local machine and concurrent workloads. Final measured reproduction evidence is in [evidence/](evidence/).
 
 Only four biological replicates and three residual degrees of freedom are available. The installed Python implementation warns about unstable dispersion-prior estimation; the warning is retained. The gold is fixed to the Python environment after the predefined R effect/direction gate passes.
 
@@ -72,6 +72,8 @@ docker run --rm --network none --mount "type=bind,src=$projectPath,dst=/work" -w
 ```
 
 Before gold preparation, copy the reviewed interpretation into results/run-1/interpretation.md. The pipeline calculates results; the interpretation is separately authored and reviewed.
+
+[benchmark/REHEARSAL.md](benchmark/REHEARSAL.md) records the correct solution (85 automatic points, human review pending), rejection of real unpaired and reversed-contrast executions, and read-only/network/failure probes.
 
 The runner enforces 2 CPUs, 4 GiB, 128 processes, 30-minute timeout, no network, non-root execution, read-only root/input/source and no Docker socket or evaluator mounts. Receipts and logs remain outside participant mounts. This is basic container isolation, not a claim of protection against every hostile-kernel exploit.
 

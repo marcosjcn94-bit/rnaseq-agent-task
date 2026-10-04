@@ -1,0 +1,32 @@
+{
+  "elapsed_seconds": 2.6204732000187505,
+  "exit_code": 1,
+  "image_id": "sha256:dc7aa8d4f631ae78c5c229a91f0fc5cfda8c07d70492bcd03cb630d8312d24dc",
+  "limits": {
+    "memory_bytes": 4294967296,
+    "nano_cpus": 2000000000,
+    "pids": 128
+  },
+  "log_sha256": "3ac3c4ddcc7257279e41d20e236fff1e443e16ff0330cd745a3d4b0aaaa9575d",
+  "mounts": [
+    {
+      "destination": "/output",
+      "read_write": true
+    },
+    {
+      "destination": "/submission",
+      "read_write": false
+    }
+  ],
+  "network_mode": "none",
+  "output_hashes": {},
+  "read_only_root": true,
+  "schema_version": 1,
+  "source_hashes": {
+    "analyze.py": "2142d51aa5316c757f143ef092fa01aaa381071399133cc54293c3660337db27"
+  },
+  "source_unchanged": true,
+  "started_at": "2026-10-04T14:57:09.286861+00:00",
+  "status": "failed",
+  "user": "65532:65532"
+}

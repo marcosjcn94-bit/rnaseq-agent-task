@@ -13,6 +13,9 @@ def prepare(source, validation, destination):
     manifest = json.loads((source/"run_manifest.json").read_text(encoding="utf-8"))
     if manifest.get("status")!="success":
         raise ValueError("source run did not succeed")
+    for name in ["differential_expression.csv","analysis_summary.json"]:
+        if manifest.get("files",{}).get(name)!=sha256(source/name):
+            raise ValueError(f"source artifact hash mismatch: {name}")
     if destination.exists() and any(destination.iterdir()):
         raise ValueError("gold destination must be empty")
     destination.mkdir(parents=True,exist_ok=True)

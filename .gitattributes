@@ -1,3 +1,5 @@
 * text=auto eol=lf
 *.png binary
 *.zip binary
+# Preserve byte-level evidence digests across platform checkouts.
+evidence/** -text
