@@ -24,7 +24,7 @@ items={
 for original,target in items.items():
     raw=(root/original).read_bytes()
     if raw.startswith((b"\xff\xfe",b"\xfe\xff")):
-        (out/target).write_text(raw.decode("utf-16"),encoding="utf-8")
+        (out/target).write_bytes(raw.decode("utf-16").replace("\r\n","\n").encode("utf-8"))
     else:
         shutil.copyfile(root/original,out/target)
 for case in ["correct","unpaired","reversed"]:

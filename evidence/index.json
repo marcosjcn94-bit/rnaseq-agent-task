@@ -5,8 +5,8 @@
     "grade-reversed.json": "f9c9a8d5045fe52a05101763ba5a4963e32ae0a8b71c34573e766e018fa5a186",
     "grade-unpaired.json": "1775853e474e4e81e078b57e3d1020e1f58f17b209e4d14fb4c0cd6568624a8e",
     "isolation-failure.log": "3ac3c4ddcc7257279e41d20e236fff1e443e16ff0330cd745a3d4b0aaaa9575d",
-    "participant-isolation.json": "86fb2def267e563aab7bca34995acd774dc7b33b654ddc78f7c400b14b68fdc9",
-    "pip-check.log": "af53b0c9c8e73017dafbcbff44fce58574ae6537e30f7b2de7c84dd27ba7c97a",
+    "participant-isolation.json": "3c1cf79e1edcf3c2405a8d1c808eb962e4bf5dc9bd437d9301b0e3cb6c89df3a",
+    "pip-check.log": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09",
     "qc.json": "a8782fad5444759dd6b926e619ebfb01ac088fcb97e7dccc28d074e8f33b1e9e",
     "receipt-correct.json": "379cd1149bd9431a9bc4b85d7ec7719a3bef511aad0eb082e5183f66371dbed6",
     "receipt-failure.json": "4eea4505c87d8407deb359cefcfea583ab3ec0e5f4bcf996726efca15035706a",
@@ -17,7 +17,7 @@
     "run-1.json": "722de84490ad8a098f785cb02637cce0cb95aeb30a63458bb7cddbadf832f63d",
     "run-2.json": "33cc7575a0889da7b857282406792edbb98f36d9a8f9fc787ddee158ae0a5579",
     "scientific-audit.json": "d5eef0c5770317db2aa04c8ad370c7ac6fa204c7e3dd16b60fc6ffdc4cc70651",
-    "tests.log": "f997c5311ddfd38f528011c775c317449be4446bfb8db615dcefc3c4302803f6"
+    "tests.log": "ba4e5be86a81ca8c8919117114928da3be0a9dd7dad77573fad123451ef8a36a"
   },
   "final_runs": [
     {
