@@ -1,0 +1,9 @@
+{
+  "completed": false,
+  "reviewer": "",
+  "score": null,
+  "method_verified": false,
+  "figures_reviewed": false,
+  "sources_reviewed": false,
+  "notes": "Pending identified human review; do not infer approval from automated checks."
+}
