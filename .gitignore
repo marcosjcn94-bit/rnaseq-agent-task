@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+.superpowers/
+.artifacts/
+results/
+figures/
+benchmark/gold/
+reference/output/
+*.egg-info/
+PLUGINS-SKILLS-CODEX.md

@@ -1,0 +1,9 @@
+{
+    "r_image_id":  "sha256:be72a4cb6b900259697fd30c5253ebeabe2c8ded98b2ae82a54a28f904d22706",
+    "Bioconductor":  "3.22",
+    "python_initial_image_id":  "sha256:13b69b245a31c45a9ab9c37d319797b1c25b1a9f3145286c8e601db3d500cd97",
+    "R":  "4.5.2",
+    "verified_at":  "2026-10-04",
+    "airway":  "1.30.0",
+    "DESeq2":  "1.50.2"
+}

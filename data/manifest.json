@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "acquired_at": "2026-10-04 14:10:41 UTC",
+  "source": "Bioconductor airway object, assay counts",
+  "count_type": "raw_fragment_counts",
+  "dataset": "GSE52778",
+  "subset": "4 donors x control/treated; no albuterol",
+  "genes": 63677,
+  "samples": 8,
+  "sample_ids": ["SRR1039508", "SRR1039509", "SRR1039512", "SRR1039513", "SRR1039516", "SRR1039517", "SRR1039520", "SRR1039521"],
+  "urls": ["https://bioconductor.org/packages/airway", "https://bioconductor.org/packages/release/data/experiment/vignettes/airway/inst/doc/airway.html", "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE52778"],
+  "airway_version": "1.30.0",
+  "r_version": "R version 4.5.2 (2025-10-31)",
+  "bioconductor_version": "3.22",
+  "annotation": {
+    "genomeInfo": {
+      "Db type": "TranscriptDb",
+      "Supporting package": "GenomicFeatures",
+      "Data source": "BioMart",
+      "Organism": "Homo sapiens",
+      "Resource URL": "www.biomart.org:80",
+      "BioMart database": "ensembl",
+      "BioMart database version": "ENSEMBL GENES 75 (SANGER UK)",
+      "BioMart dataset": "hsapiens_gene_ensembl",
+      "BioMart dataset description": "Homo sapiens genes (GRCh37.p13)",
+      "BioMart dataset version": "GRCh37.p13",
+      "Full dataset": "yes",
+      "miRBase build ID": null,
+      "transcript_nrow": "215647",
+      "exon_nrow": "745593",
+      "cds_nrow": "537555",
+      "Db created by": "GenomicFeatures package from Bioconductor",
+      "Creation time": "2014-07-10 14:55:55 -0400 (Thu, 10 Jul 2014)",
+      "GenomicFeatures version at creation time": "1.17.9",
+      "RSQLite version at creation time": "0.11.4",
+      "DBSCHEMAVERSION": "1.0"
+    }
+  },
+  "files": {
+    "counts.csv": {
+      "path": "counts.csv",
+      "bytes": 2287691,
+      "sha256": "69d93e59052f921cea64b82f9b207aebde9d6b9532a9d12cdba4a06ad5391736"
+    },
+    "metadata.csv": {
+      "path": "metadata.csv",
+      "bytes": 240,
+      "sha256": "285c9bb58ac5ccef7345906158d3f2f4f88a0c0489e939d8fd639fa02c7bbc8d"
+    },
+    "annotation.csv": {
+      "path": "annotation.csv",
+      "bytes": 1873551,
+      "sha256": "3219d6b73d51cf6de99ba3c9ef7d99f728c737781746ee47fb1da368855d07de"
+    }
+  },
+  "mapping": {
+    "donor": "cell",
+    "condition": {
+      "untrt": "control",
+      "trt": "treated"
+    }
+  },
+  "package_license": "LGPL"
+}

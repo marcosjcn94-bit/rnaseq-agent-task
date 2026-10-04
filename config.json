@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "min_count": 10,
+  "min_samples": 4,
+  "design": "~ donor + condition",
+  "contrast": [
+    "condition",
+    "treated",
+    "control"
+  ],
+  "alpha": 0.05,
+  "lfc_highlight": 1,
+  "fit_type": "parametric",
+  "size_factors_fit_type": "ratio",
+  "refit_cooks": true,
+  "min_replicates": 7,
+  "cooks_filter": true,
+  "independent_filter": true,
+  "n_cpus": 2,
+  "pca_genes": 500,
+  "heatmap_genes": 20
+}

@@ -1,0 +1,11 @@
+.git
+.superpowers
+.artifacts
+.venv
+results
+figures
+reference
+benchmark/gold
+__pycache__
+.pytest_cache
+PLUGINS-SKILLS-CODEX.md
