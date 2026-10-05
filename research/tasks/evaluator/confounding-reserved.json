@@ -1,0 +1,18 @@
+﻿{
+    "answer_key":  {
+                       "report":  "not_identifiable",
+                       "identifiable":  false
+                   },
+    "family":  "confounding",
+    "id":  "confounding-reserved",
+    "rubric":  {
+                   "forbidden":  {
+                                     "causal_claim":  true
+                                 },
+                   "required":  {
+                                    "report":  "not_identifiable",
+                                    "identifiable":  false
+                                }
+               },
+    "split":  "reserved"
+}

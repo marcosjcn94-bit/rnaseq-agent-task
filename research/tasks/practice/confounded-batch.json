@@ -1,0 +1,11 @@
+{
+  "purpose": "practice_only",
+  "metadata": [
+    {"sample_id": "A1", "donor": "D1", "condition": "control", "batch": "A"},
+    {"sample_id": "A2", "donor": "D2", "condition": "control", "batch": "A"},
+    {"sample_id": "B1", "donor": "D1", "condition": "treated", "batch": "B"},
+    {"sample_id": "B2", "donor": "D2", "condition": "treated", "batch": "B"}
+  ],
+  "prompt": "É possível atribuir a diferença observada à condição separando-a do lote? Explique sem calcular coeficiente.",
+  "expected_conclusion": "not_identifiable_condition_and_batch_perfectly_confounded"
+}

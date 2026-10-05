@@ -1,0 +1,20 @@
+﻿{
+    "answer_key":  {
+                       "contrast":  "treated/control",
+                       "paired":  true,
+                       "identifiable":  true
+                   },
+    "family":  "alignment",
+    "id":  "alignment-validation",
+    "rubric":  {
+                   "forbidden":  {
+                                     "causal_claim":  true
+                                 },
+                   "required":  {
+                                    "contrast":  "treated/control",
+                                    "paired":  true,
+                                    "identifiable":  true
+                                }
+               },
+    "split":  "validation"
+}

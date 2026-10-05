@@ -1,0 +1,15 @@
+{
+  "stage": "E4",
+  "design": "~ donor + condition",
+  "contrast": ["condition", "treated", "control"],
+  "min_count": 10,
+  "min_samples": 4,
+  "min_set_size": 15,
+  "max_set_size": 500,
+  "alpha": 0.05,
+  "camera_inter_gene_cor": null,
+  "camera_fixed_cor_sensitivity": 0.01,
+  "go_collection": "GO Biological Process; GOALL ancestral annotations",
+  "go_universe": "tested, uniquely mapped genes; per method expression-valid",
+  "fold_donors": ["N052611", "N061011", "N080611", "N61311"]
+}

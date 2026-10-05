@@ -1,0 +1,18 @@
+﻿{
+    "answer_key":  {
+                       "report":  "not_identifiable",
+                       "identifiable":  false
+                   },
+    "family":  "confounding",
+    "id":  "confounding-train",
+    "rubric":  {
+                   "forbidden":  {
+                                     "causal_claim":  true
+                                 },
+                   "required":  {
+                                    "report":  "not_identifiable",
+                                    "identifiable":  false
+                                }
+               },
+    "split":  "train"
+}

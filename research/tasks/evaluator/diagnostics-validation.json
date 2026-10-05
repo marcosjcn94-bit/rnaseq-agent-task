@@ -1,0 +1,20 @@
+﻿{
+    "answer_key":  {
+                       "causal_claim":  false,
+                       "join":  "gene_id",
+                       "preserve_na":  true
+                   },
+    "family":  "diagnostics",
+    "id":  "diagnostics-validation",
+    "rubric":  {
+                   "forbidden":  {
+                                     "causal_claim":  true
+                                 },
+                   "required":  {
+                                    "causal_claim":  false,
+                                    "join":  "gene_id",
+                                    "preserve_na":  true
+                                }
+               },
+    "split":  "validation"
+}

@@ -1,0 +1,54 @@
+﻿{
+    "id":  "alignment-train",
+    "response_schema":  [
+                            "contrast",
+                            "paired",
+                            "identifiable"
+                        ],
+    "family":  "alignment",
+    "fixture":  {
+                    "count_columns":  [
+                                          "T2_C",
+                                          "T3_T",
+                                          "T1_T",
+                                          "T1_C",
+                                          "T2_T",
+                                          "T3_C"
+                                      ],
+                    "sample_metadata":  [
+                                            {
+                                                "donor":  "D3",
+                                                "condition":  "treated",
+                                                "sample_id":  "T3_T"
+                                            },
+                                            {
+                                                "donor":  "D1",
+                                                "condition":  "control",
+                                                "sample_id":  "T1_C"
+                                            },
+                                            {
+                                                "donor":  "D2",
+                                                "condition":  "treated",
+                                                "sample_id":  "T2_T"
+                                            },
+                                            {
+                                                "donor":  "D1",
+                                                "condition":  "treated",
+                                                "sample_id":  "T1_T"
+                                            },
+                                            {
+                                                "donor":  "D3",
+                                                "condition":  "control",
+                                                "sample_id":  "T3_C"
+                                            },
+                                            {
+                                                "donor":  "D2",
+                                                "condition":  "control",
+                                                "sample_id":  "T2_C"
+                                            }
+                                        ],
+                    "design":  "~ donor + condition"
+                },
+    "split":  "train",
+    "prompt":  "Alinhe contagens por sample_id, identifique pares completos e diga se condição e contraste são estimáveis."
+}

@@ -1,0 +1,20 @@
+﻿{
+    "answer_key":  {
+                       "causal_claim":  false,
+                       "account_for_correlation":  true,
+                       "exclude_ambiguous_mapping":  true
+                   },
+    "family":  "functional",
+    "id":  "functional-validation",
+    "rubric":  {
+                   "forbidden":  {
+                                     "causal_claim":  true
+                                 },
+                   "required":  {
+                                    "causal_claim":  false,
+                                    "account_for_correlation":  true,
+                                    "exclude_ambiguous_mapping":  true
+                                }
+               },
+    "split":  "validation"
+}

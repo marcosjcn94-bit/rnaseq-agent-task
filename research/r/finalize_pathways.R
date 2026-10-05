@@ -1,0 +1,51 @@
+suppressPackageStartupMessages({library(goseq);library(jsonlite);library(digest)})
+args<-commandArgs(trailingOnly=TRUE);stopifnot(length(args)==4L)
+source_dir<-args[[1]];ann_dir<-args[[2]];config_path<-args[[3]];out<-args[[4]]
+if(dir.exists(out)&&length(list.files(out,all.files=TRUE,no..=TRUE)))stop("output must be empty")
+dir.create(out,recursive=TRUE,showWarnings=FALSE);cfg<-fromJSON(config_path,simplifyVector=TRUE)
+files<-c("camera_all_terms.csv","ora_deseq2_baseline.csv","ora_common_universe_no_if.csv","selection_bias_data.csv")
+for(f in files)stopifnot(file.copy(file.path(source_dir,f),file.path(out,f)))
+mapping<-read.csv(file.path(ann_dir,"ensembl_entrez_unique.csv"),stringsAsFactors=FALSE)
+membership<-read.csv(file.path(ann_dir,"go_bp_ancestral_membership.csv"),stringsAsFactors=FALSE)
+bias_data<-read.csv(file.path(out,"selection_bias_data.csv"),stringsAsFactors=FALSE)
+universe<-bias_data$gene_id;selected<-setNames(as.integer(bias_data$selected),universe)
+entrez_by_gene<-setNames(as.character(mapping$entrez),mapping$ensembl)
+mapped<-unique(unname(entrez_by_gene[universe]));go_entrez<-as.character(membership$entrez)
+sets<-split(go_entrez,as.character(membership$go_id))
+set_sizes<-vapply(sets,function(x)length(intersect(unique(x),mapped)),integer(1))
+eligible<-names(set_sizes)[set_sizes>=cfg$min_set_size&set_sizes<=cfg$max_set_size]
+member<-membership[as.character(membership$go_id)%in%eligible,,drop=FALSE]
+by_entrez<-split(as.character(member$go_id),as.character(member$entrez))
+gene2cat<-lapply(unname(entrez_by_gene[universe]),function(e){x<-by_entrez[[e]];if(is.null(x))character()else unique(x)})
+names(gene2cat)<-universe
+run_one<-function(field,label){
+  bias<-setNames(bias_data[[field]],universe)
+  pwf<-nullp(selected,bias.data=bias,plot.fit=FALSE)
+  fit<-goseq(pwf,gene2cat=gene2cat,use_genes_without_cat=TRUE,method="Wallenius")
+  fit<-fit[fit$category%in%eligible,,drop=FALSE]
+  fit$over_p_raw<-fit$over_represented_pvalue;fit$under_p_raw<-fit$under_represented_pvalue
+  fit$over_represented_pvalue<-pmin(1,pmax(0,fit$over_p_raw))
+  fit$under_represented_pvalue<-pmin(1,pmax(0,fit$under_p_raw))
+  fit$over_p_clipped<-fit$over_p_raw!=fit$over_represented_pvalue
+  fit$under_p_clipped<-fit$under_p_raw!=fit$under_represented_pvalue
+  fit$analysis<-label
+  fit$fdr_over<-p.adjust(fit$over_represented_pvalue,"BH")
+  fit$fdr_under<-p.adjust(fit$under_represented_pvalue,"BH")
+  curves<-data.frame(gene_id=rownames(pwf),bias=pwf$bias,pwf=pwf$pwf,selected=pwf$DEgenes,analysis=label)
+  list(result=fit,curve=curves)
+}
+a<-run_one("length_bp","exon_union_length")
+b<-run_one("mean_normalized_expression","mean_normalized_expression")
+write.csv(rbind(a$result,b$result),file.path(out,"goseq_sensitivities.csv"),row.names=FALSE,na="")
+write.csv(rbind(a$curve,b$curve),file.path(out,"selection_probability_curves.csv"),row.names=FALSE)
+out_files<-list.files(out,full.names=TRUE)
+hashes<-setNames(vapply(out_files,function(f)digest(file=f,algo="sha256"),character(1)),basename(out_files))
+manifest<-list(stage="E4",source_pathways_run=source_dir,created_utc=format(Sys.time(),tz="UTC",usetz=TRUE),
+  config_sha256=digest(file=config_path,algo="sha256"),pathways_code_sha256=digest(file="research/r/pathways.R",algo="sha256"),
+  finalization_code_sha256=digest(file="research/r/finalize_pathways.R",algo="sha256"),
+  source_run_manifest_sha256=digest(file=file.path(source_dir,"manifest.json"),algo="sha256"),
+  annotation_manifest=fromJSON(file.path(ann_dir,"manifest.json")),universe_genes=length(universe),
+  GO_terms_tested=length(eligible),GO_size_range=c(cfg$min_set_size,cfg$max_set_size),
+  GO_collection=cfg$go_collection,versions=sapply(c("edgeR","limma","DESeq2","goseq"),function(p)as.character(packageVersion(p))),
+  files_sha256=as.list(hashes))
+write_json(manifest,file.path(out,"manifest.json"),auto_unbox=TRUE,pretty=TRUE)

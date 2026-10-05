@@ -16,3 +16,16 @@ jobs:
         run: docker run --rm --network none rnaseq-ci pip check
       - name: Offline fixture and failure tests
         run: docker run --rm --network none --read-only --tmpfs /tmp:rw,nosuid,size=512m rnaseq-ci python -m pytest -q -p no:cacheprovider
+  research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - name: Build isolated research Python image
+        run: docker build -f research/python.Dockerfile -t airway-research-ci .
+      - name: Research fixtures offline
+        run: docker run --rm --network none --read-only --tmpfs /tmp:rw,nosuid,size=512m airway-research-ci python -m pytest research/tests -q -p no:cacheprovider
+      - name: Build isolated research R image
+        run: docker build -f research/r.Dockerfile -t airway-research-r-ci .
+      - name: R research fixtures offline
+        run: docker run --rm --network none --read-only --tmpfs /tmp:rw,nosuid,size=512m -v "$PWD:/workspace:ro" -w /workspace airway-research-r-ci Rscript research/r/test_pathway_utils.R

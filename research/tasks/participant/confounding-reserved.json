@@ -1,0 +1,35 @@
+﻿{
+    "id":  "confounding-reserved",
+    "response_schema":  [
+                            "report",
+                            "identifiable"
+                        ],
+    "family":  "confounding",
+    "fixture":  {
+                    "proposed_design":  "~ batch + condition",
+                    "samples":  [
+                                    {
+                                        "batch":  "B1",
+                                        "condition":  "control",
+                                        "sample_id":  "S1"
+                                    },
+                                    {
+                                        "batch":  "B1",
+                                        "condition":  "control",
+                                        "sample_id":  "S2"
+                                    },
+                                    {
+                                        "batch":  "B2",
+                                        "condition":  "treated",
+                                        "sample_id":  "S3"
+                                    },
+                                    {
+                                        "batch":  "B2",
+                                        "condition":  "treated",
+                                        "sample_id":  "S4"
+                                    }
+                                ]
+                },
+    "split":  "reserved",
+    "prompt":  "Avalie se efeito de condição é identificável quando condição e lote estão perfeitamente confundidos; indique o que relatar."
+}

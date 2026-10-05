@@ -1,0 +1,12 @@
+{
+  "purpose": "practice_only",
+  "metadata": [
+    {"sample_id": "S2T", "donor": "D2", "condition": "treated"},
+    {"sample_id": "S1C", "donor": "D1", "condition": "control"},
+    {"sample_id": "S2C", "donor": "D2", "condition": "control"},
+    {"sample_id": "S1T", "donor": "D1", "condition": "treated"}
+  ],
+  "counts_columns": ["S1C", "S2C", "S1T", "S2T"],
+  "expected_pairs": {"D1": ["S1C", "S1T"], "D2": ["S2C", "S2T"]},
+  "prompt": "Alinhe por sample_id e explique por que ordem posicional não é contrato."
+}

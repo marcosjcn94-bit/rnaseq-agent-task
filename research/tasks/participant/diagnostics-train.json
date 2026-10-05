@@ -1,0 +1,35 @@
+﻿{
+    "id":  "diagnostics-train",
+    "response_schema":  [
+                            "causal_claim",
+                            "join",
+                            "preserve_na"
+                        ],
+    "family":  "diagnostics",
+    "fixture":  {
+                    "R_universe":  2,
+                    "independent_filter_thresholds":  {
+                                                          "python":  "unknown",
+                                                          "R":  "unknown"
+                                                      },
+                    "python_universe":  2,
+                    "joined_results":  [
+                                           {
+                                               "R_log2FC":  0.88,
+                                               "gene_id":  "ENSG_TEST_A",
+                                               "python_padj":  0.04,
+                                               "python_log2FC":  0.9,
+                                               "R_padj":  0.08
+                                           },
+                                           {
+                                               "R_log2FC":  -0.21,
+                                               "gene_id":  "ENSG_TEST_B",
+                                               "python_padj":  null,
+                                               "python_log2FC":  -0.2,
+                                               "R_padj":  null
+                                           }
+                                       ]
+                },
+    "split":  "train",
+    "prompt":  "Investigue discordância com LFC semelhante e padj ausente. Separe fatos observados de causas que não podem ser determinadas pelo resumo."
+}

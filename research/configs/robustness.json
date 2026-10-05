@@ -1,0 +1,18 @@
+{
+  "stage": "E3",
+  "min_count": 10,
+  "min_samples": 4,
+  "design": "~ donor + condition",
+  "contrast": ["condition", "treated", "control"],
+  "fit_type": "parametric",
+  "size_factors_fit_type": "ratio",
+  "refit_cooks": true,
+  "min_replicates": 7,
+  "n_cpus": 2,
+  "cooks_filter": true,
+  "independent_filter": true,
+  "alpha": 0.05,
+  "lfc_highlight": 1,
+  "stability_thresholds": [0.25, 0.5, 1.0],
+  "fixed_universe": "baseline_16139_genes"
+}

@@ -1,0 +1,13 @@
+{
+  "seed": 20261005,
+  "genes": 1000,
+  "replicates": 200,
+  "pilot_replicates": 10,
+  "pairs": [4, 8, 12, 20],
+  "de_fractions": [0.0, 0.1],
+  "interaction_sd": [0.0, 0.5],
+  "effect_abs_log2": 1.0,
+  "alpha": 0.05,
+  "empirical_diagnostics": ".artifacts/research/E2/r-baseline/gene_diagnostics.csv",
+  "output": ".artifacts/research/E6"
+}

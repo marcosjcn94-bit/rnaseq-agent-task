@@ -1,0 +1,19 @@
+﻿{
+    "id":  "functional-train",
+    "response_schema":  [
+                            "causal_claim",
+                            "account_for_correlation",
+                            "exclude_ambiguous_mapping"
+                        ],
+    "family":  "functional",
+    "fixture":  {
+                    "donors":  4,
+                    "ambiguous_gene_mappings":  2,
+                    "intervention_randomized":  false,
+                    "inter_gene_correlation":  "not measured in supplied summary",
+                    "experiment":  "paired observational RNA-seq",
+                    "pathway_test":  "competitive"
+                },
+    "split":  "train",
+    "prompt":  "Interprete possível enriquecimento funcional com mapeamento ambíguo, correlação gênica não medida e experimento observacional. Delimite a conclusão."
+}

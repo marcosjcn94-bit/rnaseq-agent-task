@@ -1,0 +1,8 @@
+args<-commandArgs(trailingOnly=TRUE);stopifnot(length(args)==1L)
+mapping<-read.csv(file.path(args[[1]],"ensembl_entrez_unique.csv"),stringsAsFactors=FALSE)
+go<-read.csv(file.path(args[[1]],"go_bp_ancestral_membership.csv"),stringsAsFactors=FALSE)
+stopifnot(identical(names(mapping),c("ensembl","entrez")),!anyDuplicated(mapping$ensembl),!anyDuplicated(mapping$entrez))
+stopifnot(identical(names(go),c("go_id","entrez","TERM")),!anyNA(go),!anyDuplicated(go[c("go_id","entrez")]))
+term_table<-unique(go[c("go_id","TERM")]);term_names<-setNames(term_table$TERM,term_table$go_id)
+stopifnot(length(term_names)>0L,!anyDuplicated(names(term_names)),all(nzchar(names(term_names))))
+cat("annotation snapshot checks passed:",nrow(mapping),"unique mappings,",nrow(go),"GO memberships,",length(term_names),"terms\n")

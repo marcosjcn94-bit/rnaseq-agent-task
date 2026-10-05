@@ -1,0 +1,54 @@
+﻿{
+    "id":  "alignment-validation",
+    "response_schema":  [
+                            "contrast",
+                            "paired",
+                            "identifiable"
+                        ],
+    "family":  "alignment",
+    "fixture":  {
+                    "count_columns":  [
+                                          "V2_C",
+                                          "V3_T",
+                                          "V1_T",
+                                          "V1_C",
+                                          "V2_T",
+                                          "V3_C"
+                                      ],
+                    "sample_metadata":  [
+                                            {
+                                                "donor":  "D3",
+                                                "condition":  "treated",
+                                                "sample_id":  "V3_T"
+                                            },
+                                            {
+                                                "donor":  "D1",
+                                                "condition":  "control",
+                                                "sample_id":  "V1_C"
+                                            },
+                                            {
+                                                "donor":  "D2",
+                                                "condition":  "treated",
+                                                "sample_id":  "V2_T"
+                                            },
+                                            {
+                                                "donor":  "D1",
+                                                "condition":  "treated",
+                                                "sample_id":  "V1_T"
+                                            },
+                                            {
+                                                "donor":  "D3",
+                                                "condition":  "control",
+                                                "sample_id":  "V3_C"
+                                            },
+                                            {
+                                                "donor":  "D2",
+                                                "condition":  "control",
+                                                "sample_id":  "V2_C"
+                                            }
+                                        ],
+                    "design":  "~ donor + condition"
+                },
+    "split":  "validation",
+    "prompt":  "Alinhe contagens por sample_id, identifique pares completos e diga se condição e contraste são estimáveis."
+}
