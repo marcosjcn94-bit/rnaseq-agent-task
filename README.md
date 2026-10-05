@@ -86,3 +86,15 @@ Automatic grading totals 85 points; human review adds up to 15. A score of 85 al
 Code and documentation were developed with Codex assistance. Separate Python/R implementations and source inspection provide computational cross-checks; no external scientist review or user mastery is claimed. Human review and interview rehearsal must be recorded honestly.
 
 Own code is MIT licensed. Dataset/source licensing and attribution are separate: see [data/LICENSE-NOTES.md](data/LICENSE-NOTES.md). This reanalysis makes no novel-discovery or clinical claims.
+
+## Revisão humana e entrevista
+
+- [Como realizar a revisão humana](docs/HUMAN-REVIEW.md): roteiro, itens de inspeção e critérios dos 15 pontos.
+- [Preparação para entrevista](docs/INTERVIEW.md): cinco respostas e roteiro de demonstração em português.
+- [Avaliação científica e próximos passos](docs/SCIENTIFIC-ASSESSMENT.md): escopo das evidências, limitações e propostas de extensão.
+
+O modelo `benchmark/HUMAN_REVIEW.json` fica incompleto até que um revisor identificado conclua a inspeção. 85 pontos automáticos não dispensam essa etapa. A nota é atribuída pelo revisor com evidências; os campos do JSON não autenticam a identidade de quem os preenche.
+
+## Estado da publicação
+
+O branch `implementation` contém a implementação e as evidências locais. Consulte a aba Actions para o estado da CI remota. A CI executa fixtures offline e não refaz a análise completa do conjunto airway. A publicação do código demonstra um projeto de reanálise computacional; não constitui revisão por pares, descoberta biológica nova ou evidência de domínio individual.

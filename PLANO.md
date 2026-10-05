@@ -1,34 +1,32 @@
-# Execução — rnaseq-agent-task
+# Execução e estado do projeto AIRWAY
 
-Escopo aprovado: opção 3, sem prazo; execução local por um agente, sem publicação automática. A especificação original PLANO-BIOINFORMATICA.md foi preservada como documento de planejamento; este arquivo registra o estado atual.
+Escopo: opção 3, MVP completo com testes de falhas, revisão científica computacional, tarefa demonstrativa e preparação para entrevista. A especificação original `PLANO-BIOINFORMATICA.md` foi preservada; este arquivo registra execução e pendências.
 
-- [x] 1. Ambiente, contratos, dados oficiais e proveniência.
-- [x] 2. Validação de entrada e QC bruto.
-- [x] 3. Modelo pareado, QC normalizado, figuras e manifestos.
-- [x] 4. Referência R/DESeq2 e revisão científica computacional.
-- [x] 5. Tarefa, runner offline, grader e ensaio adversarial.
-- [x] 6. Reprodução, CI configurada/testada localmente, documentação e preparação para entrevista.
-- [ ] Revisão científica humana identificada e pontuação dos 15 pontos humanos.
-- [ ] Ensaio do usuário: explicar cinco decisões centrais.
-- [ ] Publicação autorizada e execução da CI no GitHub.
+## Entregas de engenharia concluídas
 
-## Ajustes executados
+- Dados oficiais airway 1.30.0: 63.677 genes, oito amostras, quatro pares controle/tratado sem albuterol; proveniência, licença e hashes documentados.
+- Validação de contagens brutas, IDs, metadados, pares e configuração; rejeição de entradas inválidas.
+- PyDESeq2 0.5.4, modelo `~ donor + condition`, saídas tabulares, resumo, QC e quatro figuras.
+- Reanálise de referência em R/DESeq2 1.50.2, comparação pré-especificada e auditoria das diferenças.
+- Tarefa científica, runner Docker offline, grader determinístico, ensaios adversariais e evidências verificáveis.
+- Duas execuções científicas Python produziram tabelas idênticas; 46 testes locais passaram; `pip check` passou.
+- Branch `implementation` publicado no GitHub: [rnaseq-agent-task](https://github.com/marcosjcn94-bit/rnaseq-agent-task). Acompanhar o workflow remoto na aba Actions; a CI verifica fixtures e não refaz a análise científica completa.
+- Guias em português para revisão humana, preparação para entrevista e avaliação científica.
 
-PCA após normalização; submissão executável; gold isolado; cobertura completa; parâmetros explícitos; duas execuções finais; saídas em diretórios exclusivos. analysis_summary.json substitui summary.json; figuras ficam em cada execução/figures para evitar sobrescrita. Contratos em src/contracts.py; comparação em src/compare.py; gold/runner separados. Os três documentos de continuidade permanecem versionados.
+## Resultados e limites
 
-## Evidências por etapa — 2026-10-04
+Foram retidos 16.139 genes. Python encontrou 3.879 genes com `padj < 0,05` (2.104 aumentados, 1.775 reduzidos); 957 também tiveram `abs(log2FC) >= 1`, critério de destaque exploratório. R encontrou 4.081 significativos. Correlação Spearman do log2FC: 0,999994; concordância de direção: 100% em 852 genes fortes. As 308 divergências de classificação e 313 `padj` ausentes em R permanecem documentadas. A causa de cada discrepância não foi estabelecida.
 
-1. GitHub público e vazio, ADMIN autenticado; Docker Engine Linux 29.8.1. Python/R com versões fixas; imagem R verifica todo packages.lock.csv. Exportação do objeto airway 1.30.0: 63.677 genes, oito amostras, quatro pares, sem albuterol. SHA-256 e fontes em data/manifest.json. Commit de preparação dad52a8.
-2. Rejeição de IDs duplicados, amostra ausente, metadados incompatíveis, contagens negativas/fracionárias/ausentes, biblioteca zerada, pares incompletos e proveniência TPM. Permutar metadados preserva alinhamento. Fixtures e integração validam erro antes do ajuste.
-3. 16.139 genes retidos; 3.879 significativos (2.104 up / 1.775 down); 957 destaques exploratórios. Desenho posto cinco, três graus de liberdade; warning registrado. Quatro figuras e manifestos em results/run-1. Código/modelo e QC validados por testes.
-4. R/DESeq2 1.50.2: 4.081 significativos; repetição na imagem com lock reproduziu o hash da tabela inicial. Spearman LFC .9999944; sinais 100% em 852 genes fortes. Gate passou. 308 divergências de classificação e 313 padj ausentes em R preservados. Inspeção de fonte confirmou caminhos distintos de estimação da variância da dispersão com graus de liberdade <=3; contribuição não quantificada. reference/VALIDATION.md, comparison.json e evidence/scientific-audit.json.
-5. Correto: 85/85 automáticos, execução verificada, revisão humana pendente. Modelos reais sem doador/invertido: rejeitados (50/60 pontos). Cabeçalho vazio e outras falhas em fixtures. Probe Docker comprovou ausência de rede, entradas/código/root somente leitura e recibo de falha para erro intencional. Imagem sem solução, grader/gold/socket. benchmark/REHEARSAL.md e evidence/.
-6. Duas execuções Python, mesma imagem congelada: 122,29 / 129,84 s; RSS do processo pai 327,03 / 329,90 MiB, exclui workers. Tabelas idênticas, tolerância aceita 1e-6/1e-8. Clone com core.autocrlf=true preservou hashes de counts/metadata/manifest. 46 testes offline passaram (76,39 s); pip check passou. Figuras revisadas visualmente. CI rápida com action fixada por SHA configurada; execução remota ainda não realizada. README inglês, interpretação e roteiro de entrevista entregues. Revisão de software do próprio executor em docs/SELF-REVIEW.md.
+Há quatro doadores e três graus de liberdade residuais; não há QC de FASTQ/alinhamento nem coorte independente. É uma reanálise computacional, não uma descoberta nova ou uma conclusão clínica.
 
-## Decisões de execução
+## Revisão humana e candidatura
 
-Usar pasta dedicada e branch implementation em vez de outro worktree: repositório novo, sem trabalho concorrente. Manter PLANO/MEMORIA como ledger conforme especificação. Não delegar; revisão de software pelo executor, referência estatística em implementação R separada. Ferramentas/skills: executing-plans, TDD, debugging e verificação; Context7 consultado, priorizando documentação versionada e código instalado. MCP não é dependência da execução.
+O ensaio de referência marcou 85/85 pontos automáticos, sem falhas críticas, com execução verificada; estado correto: `pending_human_review`. Nenhum ponto humano foi atribuído. O roteiro para uma revisão genuína está em `docs/HUMAN-REVIEW.md`; não alterar o modelo de revisão para declarar uma etapa que não ocorreu.
 
-## Pendências humanas e publicação
+Resta o usuário demonstrar que consegue executar e explicar a análise. `docs/INTERVIEW.md` traz respostas de estudo; sua leitura não prova domínio. `docs/SCIENTIFIC-ASSESSMENT.md` discute extensões futuras, que não são necessárias para concluir o MVP de portfólio.
 
-HUMAN_REVIEW.json está incompleto; nenhum ponto humano foi atribuído. docs/INTERVIEW.md prepara o ensaio, sem alegar domínio demonstrado. Publicação não executada: especificação determina “Commits locais por etapa, sem push/publicação automática.” Sem bloqueio técnico local confirmado.
+## Evidências
+
+- [Comparação Python/R](reference/comparison.json) e [interpretação científica](docs/INTERPRETATION.md).
+- [Ensaio do avaliador](benchmark/REHEARSAL.md), [rubrica](benchmark/RUBRIC.md) e [pacote de evidências](evidence/).
+- [Revisão de implementação](docs/SELF-REVIEW.md): feita pelo executor, não por um revisor externo.
