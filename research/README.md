@@ -5,7 +5,9 @@ A baseline permanece em `src/`, `tests/`, `data/`, `config.json` e `reference/`.
 ## Ambientes
 
 ```powershell
+docker build --target dependencies -t rnaseq-python:dev .
 docker build -f research/python.Dockerfile -t airway-research-python .
+docker build -f reference/Dockerfile -t rnaseq-reference:dev reference
 docker build -f research/r.Dockerfile -t airway-research-r .
 # Somente para auditoria/processamento GPL96, sem instalar no host:
 docker build -f research/r-e5.Dockerfile -t airway-research-r:e5 .

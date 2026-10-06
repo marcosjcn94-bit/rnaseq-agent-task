@@ -1,4 +1,5 @@
-FROM rnaseq-python:dev@sha256:13b69b245a31c45a9ab9c37d319797b1c25b1a9f3145286c8e601db3d500cd97
+# Build this base from the repository's pinned Dockerfile dependencies target first.
+FROM rnaseq-python:dev
 WORKDIR /app
 COPY research /app/research
 COPY tests /app/tests

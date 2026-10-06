@@ -21,10 +21,14 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - name: Build pinned research Python base
+        run: docker build --target dependencies -t rnaseq-python:dev .
       - name: Build isolated research Python image
         run: docker build -f research/python.Dockerfile -t airway-research-ci .
       - name: Research fixtures offline
         run: docker run --rm --network none --read-only --tmpfs /tmp:rw,nosuid,size=512m airway-research-ci python -m pytest research/tests -q -p no:cacheprovider
+      - name: Build pinned reference R base
+        run: docker build -f reference/Dockerfile -t rnaseq-reference:dev reference
       - name: Build isolated research R image
         run: docker build -f research/r.Dockerfile -t airway-research-r-ci .
       - name: R research fixtures offline

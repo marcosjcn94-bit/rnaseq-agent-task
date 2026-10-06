@@ -1,4 +1,5 @@
-FROM rnaseq-reference:dev@sha256:be72a4cb6b900259697fd30c5253ebeabe2c8ded98b2ae82a54a28f904d22706
+# Build this base from reference/Dockerfile before creating the isolated research image.
+FROM rnaseq-reference:dev
 ARG BIOC_VERSION=3.22
 RUN Rscript -e "stopifnot(as.character(BiocManager::version()) == '${BIOC_VERSION}'); BiocManager::install(c('limma','edgeR','goseq','AnnotationDbi','org.Hs.eg.db','apeglm','affy'), ask=FALSE, update=FALSE, version='${BIOC_VERSION}')" \
     && Rscript -e "p <- installed.packages(); write.csv(data.frame(Package=rownames(p),Version=p[, 'Version']), '/tmp/research-packages.csv', row.names=FALSE)"
