@@ -8,6 +8,10 @@ Eight samples, four donor-matched control/treated pairs, without albuterol, expo
 
 No frontend, API, database or cloud deployment is necessary for this file-based scientific workload. Docker is the deployment artifact.
 
+# ARCHITECTURE
+
+<img width="3288" height="3232" alt="airway-project-DIAGRAM-ARCHITECTURE" src="https://github.com/user-attachments/assets/f55a2369-0a98-4f09-913d-a5b4e4fcf119" />
+
 ## Run on Windows / PowerShell
 
 Prerequisite: Docker Desktop with Linux containers. Preparation requires network access; analysis and tests run offline. No host Python packages, cloud account or paid model API are required.
