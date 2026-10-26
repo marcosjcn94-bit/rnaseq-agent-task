@@ -27,7 +27,7 @@ pydeseq2==0.5.4
 Pygments==2.21.0
 pyparsing==3.3.3
 pytest==9.0.3
-python-dateutil==2.9.0.post0
+python-dateutil==3.0.0
 pytz==2026.5
 PyYAML==6.0.3
 scikit-learn==1.9.1
