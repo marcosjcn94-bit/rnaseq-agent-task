@@ -1,0 +1,10 @@
+{
+  "title": "AIRWAY — Reproducible Paired RNA-seq Analysis and Offline Scientific Task Evaluation",
+  "description": "<p>Executable reanalysis of paired dexamethasone-treated human airway smooth muscle RNA-seq samples, with PyDESeq2 and a separate R/DESeq2 reference, reproducibility evidence, and offline scientific task evaluation. The research extension includes donor sensitivity analyses, pathway methods, and simulation experiments.</p><p>The MIT license covers original code and documentation. Exported data and annotation retain their upstream terms and attribution, documented in data/LICENSE-NOTES.md and data/manifest.json. Sources include the Bioconductor airway package and Himes et al. (2014), DOI 10.1371/journal.pone.0099625, GEO GSE52778.</p>",
+  "creators": [{"name": "Cabral Netto, Marcos", "orcid": "0009-0009-7286-4880"}],
+  "upload_type": "software",
+  "access_right": "open",
+  "version": "v1.0.0",
+  "license": "mit",
+  "keywords": ["RNA-seq", "reproducibility", "differential expression", "scientific computing"]
+}
