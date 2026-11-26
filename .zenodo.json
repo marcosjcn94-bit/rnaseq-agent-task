@@ -4,7 +4,7 @@
   "creators": [{"name": "Cabral Netto, Marcos", "orcid": "0009-0009-7286-4880"}],
   "upload_type": "software",
   "access_right": "open",
-  "version": "v1.0.0",
+  "version": "v1.0.1",
   "license": "mit",
   "keywords": ["RNA-seq", "reproducibility", "differential expression", "scientific computing"]
 }
