@@ -1,28 +1,28 @@
-﻿# E1 — pacote para revisão científica externa
+# E1 — External scientific review package
 
-**Estado:** pronto para encaminhar por iniciativa do usuário; nenhum revisor foi escolhido ou contatado. Sem respostas ou aprovação registradas.
+**Status:** Ready for the user to share. Reviewer selection, contact, responses, and approval are pending.
 
-## Pergunta e escopo
+## Question and scope
 
-A trilha reanalisa a coorte AIRWAY pareada (quatro doadores) para resposta transcricional a glicocorticoide; compara implementações Python/R, estabilidade por retirada de doador e anotações/conjuntos funcionais. O estudo não testa mecanismo causal e não reivindica descoberta nova. Resultados, configurações e provenance estão em `PROTOCOL.md`, `BASELINE.md`, `PYTHON-R.md`, `ROBUSTNESS.md` e `PATHWAYS.md`.
+The study reanalyzes four paired AIRWAY donors for their transcriptional response to a glucocorticoid. It compares Python and R implementations, assesses stability after removing individual donors, and examines functional annotations and gene sets. The scope covers computational associations within this dataset. The study does not test causal mechanisms or claim a new discovery. Results, configurations, and provenance are recorded in `PROTOCOL.md`, `BASELINE.md`, `PYTHON-R.md`, `ROBUSTNESS.md`, and `PATHWAYS.md`.
 
-## Cinco decisões a revisar
+## Five decisions for review
 
-1. A unidade experimental e o desenho `~ donor + condition` representam adequadamente o pareamento e os graus de liberdade disponíveis?
-2. A comparação de resultados com independent filtering e Cook’s distance ativados/desativados está interpretada corretamente, incluindo `padj` ausente?
-3. O diagnóstico das 308 discordâncias PyDESeq2/DESeq2 separa causas demonstradas de diferenças estatísticas ainda não identificadas?
-4. A retirada de cada doador, VST/PCA e interpretação dos efeitos descrevem estabilidade sem tratar os folds como replicatas independentes?
-5. Mapeamento Ensembl/Entrez, limiares de tamanho GO, CAMERA e sensibilidades GOseq são escolhas defensáveis? Quais conclusões de vias devem ser moderadas?
+1. Do the experimental unit and the `~ donor + condition` design adequately represent pairing and the available degrees of freedom?
+2. Is the interpretation of outcomes with independent filtering and Cook’s distance enabled or disabled correct, including missing `padj` values?
+3. Does the diagnosis of the 308 PyDESeq2 and DESeq2 discrepancies distinguish demonstrated causes from unresolved statistical differences?
+4. Do the donor-removal results, VST and PCA, and interpretation of effect estimates characterize stability while accounting for overlap among the folds?
+5. Are the Ensembl–Entrez mapping, GO size thresholds, CAMERA settings, and GOseq sensitivity analyses defensible? Which pathway conclusions require more qualified wording?
 
-## Registro da revisão
+## Review record
 
-Preencher somente após contato feito pelo usuário e revisão recebida: nome e qualificação declarados pelo revisor, data, artefatos/versões examinados, respostas a cada questão, limitações apontadas e resposta dos autores. Não inserir dados pessoais ou contato do revisor em artefatos publicáveis sem necessidade/consentimento.
+Complete this record after the user makes contact and receives the review. Capture the reviewer’s declared name and qualifications, the date, the artifacts and versions reviewed, responses to each question, limitations raised, and the authors’ response. Include reviewer personal or contact information in publishable artifacts only where necessary and with consent.
 
-| Campo | Estado |
+| Field | Status |
 |---|---|
-| Revisor / qualificação declarada | `pending` |
-| Data / escopo efetivamente revisado | `pending` |
-| Comentários / respostas | `pending` |
-| Demonstração individual do usuário | `pending` |
+| Reviewer and declared qualifications | `pending` |
+| Date and scope reviewed | `pending` |
+| Comments and responses | `pending` |
+| Individual demonstration by the user | `pending` |
 
-A revisão computacional e os testes locais não substituem esta avaliação científica independente.
+Computational review and local tests provide evidence for an independent scientific assessment, which remains pending.

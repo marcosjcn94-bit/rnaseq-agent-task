@@ -1,31 +1,31 @@
-# Guia de conceitos e exercícios de prática
+# Concepts and practice exercises
 
-Material para estudo; não é avaliação da proficiência pessoal do usuário.
+This study material is intended for practice. Personal proficiency requires a separate assessment.
 
-## Conceitos para explicar com as próprias palavras
+## Concepts to explain in your own words
 
-- Em desenho pareado, doador é a unidade experimental; as duas condições do mesmo doador são dependentes. Pareamento reduz variação entre doadores, mas não cria novas unidades independentes.
-- Se lote e condição forem perfeitamente confundidos, não há informação no desenho para separar seus efeitos. Não se deve reportar coeficiente causal identificável.
-- Para binomial negativa, `Var(Y)=mu + alpha*mu²`; dispersão `alpha` descreve variação extra Poisson, enquanto erro-padrão mede incerteza de um estimador sob o modelo.
-- Wald avalia estimativa/erro-padrão sob aproximação assintótica. BH controla FDR do procedimento em condições apropriadas; `padj` não é probabilidade posterior de um gene ser falso.
-- `padj=NA` pode resultar de filtro independente ou estimativa/teste indisponível, conforme método. Deve-se guardar o motivo.
-- MLE não encolhido serve à inferência especificada; shrinkage estabiliza estimativas de efeito e não deve ser confundido com SE/CI MLE.
-- Correlação ou enriquecimento funcional não demonstra mecanismo causal nem benefício clínico.
+- In a paired design, the donor is the experimental unit. The two conditions for the same donor are dependent. Pairing reduces between-donor variation, and the number of independent units stays the same.
+- When batch and condition are perfectly confounded, the design lacks the information needed to separate their effects. Report the effect as unidentifiable. A causal coefficient cannot be recovered from this design.
+- For the negative binomial distribution, `Var(Y)=mu + alpha*mu²`. Dispersion `alpha` describes extra-Poisson variation. The standard error measures the uncertainty of an estimator under the model.
+- A Wald test uses the estimate divided by its standard error under an asymptotic approximation. Benjamini–Hochberg (BH) controls the procedure’s false discovery rate under appropriate conditions. Interpret `padj` as an adjusted p-value. It does not give the posterior probability that a gene is a false discovery.
+- `padj=NA` can result from independent filtering or an unavailable estimate or test, depending on the method. Preserve the reason.
+- Unshrunken maximum likelihood estimates (MLEs) support the specified inference. Shrinkage stabilizes effect estimates. Interpret MLE standard errors and confidence intervals separately from shrinkage estimates.
+- Correlation and functional enrichment provide associative evidence. Causal mechanisms and clinical benefit require additional evidence.
 
-## Exercício A — pares embaralhados
+## Exercise A — Shuffled pairs
 
-Use `research/tasks/practice/paired-shuffled.json`. Identifique os pares e descreva uma validação que alinha contagens por `sample_id`, mesmo quando a ordem difere. Explique qual erro ocorreria ao confiar apenas na posição das colunas.
+Use `research/tasks/practice/paired-shuffled.json`. Identify the pairs and describe a check that aligns counts by `sample_id` across differing sample orders. Explain the error that could result from relying on column position alone.
 
-## Exercício B — confundimento perfeito
+## Exercise B — Perfect confounding
 
-Use `research/tasks/practice/confounded-batch.json`. Escreva a matriz de desenho conceitual e explique por que condição e lote não são separáveis. Resposta esperada: efeito não identificável; não fabricar coeficiente nem p-valor.
+Use `research/tasks/practice/confounded-batch.json`. Write out the conceptual design matrix and explain why it cannot separate condition and batch. The expected conclusion is an unidentifiable effect. A coefficient or p-value for that effect would be unsupported.
 
-## Decisões para uma revisão externa futura
+## Decisions for future external review
 
-1. Adequação da unidade experimental e do desenho pareado.
-2. Interpretação do `padj=NA` e dos filtros.
-3. Comparabilidade dos efeitos Python/R e escala log2.
-4. Adequação do universo e dos métodos de vias.
-5. Limites da validação contextual externa e da linguagem causal.
+1. Suitability of the experimental unit and paired design.
+2. Interpretation of `padj=NA` and filtering.
+3. Comparability of Python and R effect estimates on the log2 scale.
+4. Suitability of the pathway universe and methods.
+5. Limits of external contextual validation and causal language.
 
-Revisor, qualificação, data e respostas só serão registrados quando a revisão acontecer.
+Record reviewer identity, qualifications, review date, and responses once the review takes place.

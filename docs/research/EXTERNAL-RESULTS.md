@@ -1,3 +1,3 @@
-﻿# E5 — resultados da auditoria externa
+# E5 — External audit results
 
-Nenhum resultado de expressão foi calculado. A etapa foi interrompida antes da inferência devido à classificação `insufficient_metadata`; a justificativa e os hashes estão em [EXTERNAL-PROTOCOL.md](EXTERNAL-PROTOCOL.md) e `.artifacts/research/E5/`. Seis CEL foram obtidos individualmente, não a coleção RAW inteira. Uma imagem RMA separada com `hgu133acdf` foi construída, mas não usada para gerar resultados.
+The audit stopped before expression inference with the status `insufficient_metadata`. The reason and hashes are recorded in [EXTERNAL-PROTOCOL.md](EXTERNAL-PROTOCOL.md) and `.artifacts/research/E5/`. The download comprised six individual CEL files. The entire RAW collection would be a separate download. A separate RMA image with `hgu133acdf` was built and remained unused for result generation.

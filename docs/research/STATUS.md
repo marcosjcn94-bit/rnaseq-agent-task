@@ -1,19 +1,19 @@
-﻿# Status da extensão de pesquisa
+# Research extension status
 
-Data: 2026-10-05. Plano: `docs/superpowers/plans/2026-10-05-airway-research-extension.md`.
+Date 2026-10-05. Plan in `docs/superpowers/plans/2026-10-05-airway-research-extension.md`.
 
-| Etapa | Estado | Evidência / próxima ação |
+| Stage | Status | Evidence and next action |
 |---|---|---|
-| E0 | Concluída | Núcleo, imagens separadas e lock R; 8 testes; reprodução baseline dentro de `rtol=1e-6, atol=1e-8`. `BASELINE.md`. |
-| E1 | Parcial | Guia, prática e pacote de revisão prontos; demonstração individual e parecer externo pendentes. `EXTERNAL-REVIEW.md`. |
-| E2 | Concluída | Hashes baseline reproduzidos; 16.139 genes, 308 discordâncias; causa integral não resolvida. `PYTHON-R.md`. |
-| E3 | Concluída | Quatro folds pareados, efeitos/PCA/distâncias e figuras inspecionadas. `ROBUSTNESS.md`. |
-| E4 | Computacional concluída | Anotação congelada e CAMERA/ORA/GOseq executados/testados. Interpretação humana pendente; `PATHWAYS.md`. |
-| E5 | Auditoria concluída; sem inferência | SOFT/MINiML e seis CEL auditados/hash; `insufficient_metadata` para estímulo por amostra. RMA não executado; `EXTERNAL-PROTOCOL.md`. |
-| E6 | Computacional concluída | Produção offline: 3.200 PyDESeq2 (16 cenários) + 800 DESeq2 (4 cenários n=4), 200/cenário, zero falhas; agregados e manifests/hash por lote disponíveis. Comparação entre engines não pareada. `SIMULATION.md`. |
-| E7 | Suíte inicial validada | 12 casos sintéticos com fixtures explícitos, chaves separadas; 4 testes grader/runner passaram. Sem tentativas reais de agente; rubricas aguardam revisão. |
-| E8 | Validação local concluída | Baseline hash check passou; 25 testes Python, fixture R e lock R passaram; `git diff --check` limpo. Job CI separado adicionado, sem execução remota. |
+| E0 | Complete | Core workflow, separate images, and R lockfile. Eight tests. Baseline reproduced within `rtol=1e-6, atol=1e-8`. `BASELINE.md`. |
+| E1 | Partial | Guide, practice material, and review package ready. Individual demonstration and external opinion pending. `EXTERNAL-REVIEW.md`. |
+| E2 | Complete | Baseline hashes reproduced across 16,139 genes. A complete explanation for the 308 discrepancies remains unresolved. `PYTHON-R.md`. |
+| E3 | Complete | Four paired folds, effect estimates, PCA, and distances. Figures inspected. `ROBUSTNESS.md`. |
+| E4 | Computation complete | Frozen annotations and completed CAMERA, ORA, and GOseq runs and tests. Human interpretation pending. `PATHWAYS.md`. |
+| E5 | Audit complete | SOFT, MINiML, and six CEL files audited and hashed. Sample-level stimulus metadata received `insufficient_metadata`. Inference and RMA did not run. `EXTERNAL-PROTOCOL.md`. |
+| E6 | Computation complete | Offline production with 3,200 PyDESeq2 fits across 16 scenarios and 800 DESeq2 fits across four scenarios with four pairs, 200 per scenario, zero failures. Aggregates, manifests, and hashes are available by batch. The engine comparisons use independent simulations. `SIMULATION.md`. |
+| E7 | Initial suite validated | Twelve synthetic cases with explicit fixtures and separate keys. Four grader and runner tests passed. Agent attempts and rubric review pending. |
+| E8 | Local validation complete | Baseline hash check, 25 Python tests, an R fixture, and the R lockfile check passed. `git diff --check` was clean. As of the October 5 run, a separate CI job had been added and remote execution was pending. |
 
-**Pendências humanas:** demonstração individual, revisão externa, interpretação das vias, validação de rubricas e julgamento de compatibilidade externa. Nenhuma inventada; execução independente continua.
+**Pending human work.** Individual demonstration, external review, pathway interpretation, rubric validation, and judgment of external compatibility. The independent work continues.
 
-**Integridade:** baseline e alterações preexistentes preservadas (`BASELINE.md`); nenhuma instalação no host, serviço pago, mensagem, publicação ou push. Evidência E6 da rodada inicial com SD=0,35 está retida apenas para rastreabilidade e explicitamente excluída da interpretação principal.
+**Integrity.** Baseline and preexisting changes were preserved, as documented in `BASELINE.md`. The October 5 run took place without host package installations, paid services, messages, publication, or pushes. E6 evidence from the initial SD=0.35 run is retained for traceability and excluded from the primary interpretation.

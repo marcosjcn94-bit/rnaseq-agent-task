@@ -1,16 +1,16 @@
-﻿# Extensão AIRWAY — relatório de execução
+# AIRWAY extension — Execution report
 
-Data: 2026-10-05. Este relatório reúne evidência computacional local das etapas E0–E8. Baseline, entradas originais, gold e alterações anteriores permanecem preservadas.
+Date 2026-10-05. This report summarizes local computational evidence from E0–E8. The baseline, original inputs, evaluator reference data, and preexisting changes were preserved.
 
-## Resultados
+## Results
 
-- E0 reproduziu a implementação de referência dentro da tolerância congelada; ver [BASELINE.md](BASELINE.md) e [PROTOCOL.md](PROTOCOL.md).
-- E2 descreve 308 discordâncias entre PyDESeq2 e DESeq2; a causa integral não foi resolvida. E3 avalia estabilidade por retirada de doador, sem tratar folds como coortes independentes. Ver [PYTHON-R.md](PYTHON-R.md) e [ROBUSTNESS.md](ROBUSTNESS.md).
-- E4 completou anotação e testes de CAMERA/ORA/GOseq; interpretação permanece condicionada às escolhas e aos graus de liberdade baixos. Ver [PATHWAYS.md](PATHWAYS.md).
-- E5 foi classificada `insufficient_metadata`; nenhum contraste externo foi ajustado. Ver [EXTERNAL-PROTOCOL.md](EXTERNAL-PROTOCOL.md).
-- E6 completou produção: 3.200 réplicas PyDESeq2 (16 cenários) e 800 DESeq2 (quatro cenários n=4), 200 por cenário, sem falhas e com manifests/hashes. Os motores geraram datasets independentes; comparação entre engines é descritiva. Ver [SIMULATION.md](SIMULATION.md).
-- E7 entrega 12 tarefas sintéticas com fixtures/rubricas separadas; nenhuma tentativa de agente foi executada ou pontuada.
+- E0 reproduced the reference implementation within the frozen tolerance. See [BASELINE.md](BASELINE.md) and [PROTOCOL.md](PROTOCOL.md).
+- E2 documented 308 discrepancies between PyDESeq2 and DESeq2. Their full cause remains unresolved. E3 assessed sensitivity to donor removal within the original cohort. See [PYTHON-R.md](PYTHON-R.md) and [ROBUSTNESS.md](ROBUSTNESS.md).
+- E4 completed annotation and CAMERA, ORA, and GOseq testing. Interpretation depends on analysis choices and the small number of residual degrees of freedom. See [PATHWAYS.md](PATHWAYS.md).
+- E5 received the classification `insufficient_metadata` and stopped before fitting the external contrast. See [EXTERNAL-PROTOCOL.md](EXTERNAL-PROTOCOL.md).
+- E6 completed 3,200 PyDESeq2 replicates across 16 scenarios and 800 DESeq2 replicates across four scenarios with four pairs. Each scenario had 200 replicates, with zero failures and preserved manifests and hashes. The engines generated independent datasets, so cross-engine comparisons are descriptive. See [SIMULATION.md](SIMULATION.md).
+- E7 delivered 12 synthetic tasks with separate fixtures and rubrics. Agent execution and scoring remain pending.
 
-## Limites e pendências
+## Limitations and pending work
 
-Quatro doadores limitam precisão e generalização. Associações não demonstram causalidade. E5 não permite inferência externa sem metadados por amostra que resolvam os estímulos. Demonstração individual, revisão científica externa, interpretação humana das vias e validação das rubricas não ocorreram; nenhuma tentativa real de agente foi simulada ou pontuada. CI foi validado apenas localmente; não houve execução remota. Não houve publicação, mensagem, chamada paga ou push.
+Four donors limit precision and generalizability. Claims describe associations. External inference in E5 depends on sample-level metadata resolving stimulus assignment. The individual demonstration, external scientific review, human interpretation of pathways, and rubric validation remain pending. No real agent attempt was made or scored. As of the October 5 run, CI validation was local and that run had produced no remote CI executions, publications, messages, paid calls, or pushes.

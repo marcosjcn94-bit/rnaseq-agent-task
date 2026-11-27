@@ -1,23 +1,23 @@
-# E5 — auditoria externa GSE13168
+# E5 — GSE13168 external dataset audit
 
-Estado: `insufficient_metadata`; nenhuma inferência executada.
+Status is `insufficient_metadata`. Work stopped before inference.
 
-## Seleção congelada
+## Frozen selection
 
-Contraste planejado: três pares GFP basal/Flu (GSM332914/332925, GSM332915/332926, GSM332916/332927), GPL96. Endpoints definidos antes da análise: LFC e IC95% para CRISPLD2, DUSP1 e KLF15; concordância global e CAMERA seriam exploratórios. Sem exigência de igualdade de magnitude e sem alegação de novidade.
+The planned GPL96 contrast used three paired GFP basal/Flu comparisons (GSM332914/332925, GSM332915/332926, GSM332916/332927). The prespecified endpoints were log fold change (LFC) and 95% confidence intervals for CRISPLD2, DUSP1, and KLF15. Global concordance and CAMERA were exploratory. The comparison allowed different effect sizes and carried no novelty claim.
 
-| Doador no registro | Basal | Flu |
+| Donor in record | Basal | Flu |
 |---|---|---|
 | 2 | GSM332914 | GSM332925 |
 | 3 | GSM332915 | GSM332926 |
 | 4 | GSM332916 | GSM332927 |
 
-## Auditoria e decisão
+## Audit and decision
 
-SOFT e MINiML da série e seis CEL foram baixados do GEO/NCBI FTP. Hashes e extração allowlist estão em `.artifacts/research/E5/extracted/`. A auditoria confirma as seis GSM, GPL96 e os pares pelo campo `donorN` nos títulos. Os protocolos descrevem pré-tratamento de 10 nM fluticasona por 30 min e coleta após 8 h de estímulo, mas não atribuem inequivocamente o estímulo/citocina a cada registro selecionado. Os títulos “basal” e “Flu” não eliminam essa lacuna de contexto.
+The audit downloaded the series SOFT and MINiML records and six CEL files from the GEO/NCBI FTP site. Hashes and the allowlisted extraction are in `.artifacts/research/E5/extracted/`. The records confirm the six GSM accessions, GPL96, and the pairs identified by `donorN` in the titles. The protocols describe pretreatment with 10 nM fluticasone for 30 minutes and collection after 8 hours of stimulation. The selected sample records, including their “basal” and “Flu” titles, leave the exact stimulus or cytokine assignment unresolved.
 
-Decisão anterior à inferência: `insufficient_metadata`. A comparação pretendida pode misturar estímulos distintos, portanto não será ajustado um modelo para esse contraste. Os arquivos CEL foram preservados, sem processamento RMA; construir a imagem RMA não constitui resultado. O desenho também difere de AIRWAY (dexametasona 1 µM/18 h; RNA-seq), e IDs anônimos não estabelecem independência entre doadores.
+The pre-inference decision was `insufficient_metadata`. The intended comparison could combine different stimuli, so model fitting stopped. The CEL files were retained without RMA processing. The RMA image was built in preparation. The design differs from AIRWAY, which used 1 µM dexamethasone for 18 hours and RNA-seq.
 
-O identificador numérico de doador aparece pareado dentro da série GSE13168; a relação desses doadores com a coorte AIRWAY fica `unknown`.
+The numerical donor identifier supports pairing within GSE13168. The relationship between these anonymized donors and the AIRWAY cohort remains `unknown`.
 
-Fonte primária: [GEO GSE13168](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE13168); [Himes et al. (2014)](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0099625). A alternativa útil exige recuperar uma tabela por amostra que resolva estímulo e tratamento ou escolher outra coorte com metadados completos, antes de mudar o contraste.
+Primary sources are [GEO GSE13168](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE13168) and [Himes et al. (2014)](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0099625). Before revising the contrast, obtain a sample-level table that resolves stimulus and treatment or select a cohort with complete metadata.

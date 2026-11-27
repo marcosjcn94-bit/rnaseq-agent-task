@@ -1,27 +1,27 @@
-# E4 — análise funcional de vias
+# E4 — Functional pathway analysis
 
-Data: 2026-10-05. Análise exploratória do contraste tratado/controle; não demonstra ativação causal nem substitui revisão biológica.
+Date 2026-10-05. This exploratory treated/control analysis describes associations. Biological review and evidence of causal activation remain separate requirements.
 
-## Protocolo e universo
+## Protocol and universe
 
-O universo começa nos 16.139 genes testados pela baseline e usa GO Biological Process com associação ancestral (`GOALL`). Anotação funcional contemporânea congelada em `org.Hs.eg.db` 3.22.0/`GO.db` 3.22.0; contagem histórica Ensembl 75 não foi modificada. A tabela de comprimentos vem da união dos exons por gene (`reduce(rowRanges(airway))`, airway 1.30.0). O snapshot contém 16.319 relações Ensembl–Entrez brutas, 13.772 mapeamentos unívocos nos dois sentidos, 879.448 relações gene–termo e 13.855 termos BP. Os IDs excluídos por ambiguidade ficam preservados na tabela bruta; 170 genes mapeados não entraram no universo GOseq por `padj` ausente. Nenhum dos mapeamentos unívocos perdeu comprimento de éxon.
+The universe starts with the 16,139 genes tested at baseline and uses GO Biological Process with ancestral associations (`GOALL`). Contemporary functional annotation was frozen at `org.Hs.eg.db` 3.22.0 and `GO.db` 3.22.0. Historical Ensembl 75 counts were preserved. Gene lengths are based on the union of exons per gene (`reduce(rowRanges(airway))`, airway 1.30.0). The snapshot contains 16,319 raw Ensembl–Entrez relationships, 13,772 reciprocal one-to-one mappings, 879,448 gene–term relationships, and 13,855 BP terms. The raw table retains IDs excluded due to ambiguity. Missing `padj` excluded 170 mapped genes from the GOseq universe. All one-to-one mappings retained an exon length.
 
-Termos foram congelados por tamanho 15–500 no universo efetivamente testável, por análise. O método principal foi edgeR/TMM → limma-voom, desenho `~ donor + condition`, contraste tratado/controle, CAMERA direcional, ranking do modelo limma, `use.ranks=TRUE`, `allow.neg.cor=FALSE` e correlação estimada (`inter.gene.cor=NA`). Sensibilidade alterou somente essa correlação para 0,01. Cada análise/fold recebeu BH sobre seus próprios termos elegíveis. Quatro folds removeram um doador completo.
+Each analysis froze eligible term sizes at 15–500 genes in its testable universe. The primary method used edgeR/TMM followed by limma-voom with `~ donor + condition` and the treated/control contrast. Directional CAMERA used the limma model ranking, `use.ranks=TRUE`, `allow.neg.cor=FALSE`, and estimated correlation (`inter.gene.cor=NA`). The sensitivity analysis changed only that correlation to 0.01. BH was applied to the eligible terms separately for each analysis and fold. Four folds each dropped one complete donor pair.
 
-## Resultados
+## Results
 
-- **CAMERA com correlação estimada:** 4.265 termos elegíveis na base; nenhum termo com FDR < 0,05. Os folds tiveram 4.261–4.263 termos, também sem termos abaixo de 0,05.
-- **CAMERA com correlação fixa 0,01:** 11 termos com FDR < 0,05 na base; os folds variaram de 7 a 13. O resultado depende da hipótese de correlação; com quatro pares e três graus residuais, essa sensibilidade é material e não deve ser tratada como confirmação independente.
-- **ORA (sensibilidade):** lista DESeq2 com `padj < 0,05`, removendo `padj` ausente do universo. Foram 1.422/4.247 termos com FDR < 0,05. Sem independent filtering, no universo comum testável, foram 1.470/4.265. Os resultados são uma sensibilidade baseada numa lista grande de selecionados, não o ranking principal.
-- **GOseq (sensibilidades separadas):** Wallenius, categorias explícitas, mesma coleção GO e mesmo universo elegível. Com comprimento de éxons, 1.187 termos enriquecidos e 57 sub-representados tiveram FDR < 0,05; usando média de contagens normalizadas, foram 1.035 e 76. As curvas de probabilidade de seleção por gene estão em `selection_probability_curves.csv`. A diferença entre as sensibilidades mostra dependência do modelo de viés; não combinar comprimento e expressão.
+- **CAMERA with estimated correlation.** 4,265 terms were eligible at baseline. Zero had FDR < 0.05. The folds had 4,261–4,263 eligible terms and zero below 0.05.
+- **CAMERA with fixed correlation of 0.01.** The baseline had 11 terms with FDR < 0.05, and the folds ranged from 7 to 13. This sensitivity to the correlation assumption is material with four pairs and three residual degrees of freedom. Both analyses use the same cohort.
+- **ORA sensitivity analysis.** The DESeq2 list used `padj < 0.05` and excluded missing `padj` from the universe. 1,422 of 4,247 terms had FDR < 0.05. With independent filtering disabled and a shared testable universe, 1,470 of 4,265 crossed that threshold. These comparisons evaluate sensitivity to a large list of selected genes. The primary ranking comes from limma.
+- **Separate GOseq sensitivity analyses.** Wallenius tests used explicit categories and the same GO collection and eligible universe. With exon length, 1,187 overrepresented and 57 underrepresented terms had FDR < 0.05. With mean normalized counts, the corresponding counts were 1,035 and 76. Selection probability curves are in `selection_probability_curves.csv`. Differences reflect sensitivity to the bias model. Length and expression were evaluated separately.
 
-Cinco p-values GOseq elegíveis excederam 1 apenas por erro numérico (máximo observado antes do corte: `4,9e-11`). Foram limitados ao intervalo matemático [0,1], e o BH foi recalculado após restringir 15–500 genes. O valor bruto, flag de correção e ambas as caudas são preservados em `goseq_sensitivities.csv`. O ajuste `nullp` também emitiu o aviso de ponto inicial próximo às restrições; as curvas e os avisos devem ser considerados ao interpretar os resultados.
+Five eligible GOseq p-values exceeded 1 because of numerical error. The maximum excess before clipping was `4.9e-11`. P-values were clipped to the mathematical interval [0, 1], and BH was recalculated after applying the 15–500 gene limit. `goseq_sensitivities.csv` preserves each raw value, the correction flag, and both tails. The `nullp` fit also warned that the starting point was close to the constraints. Consider the curves and warnings when interpreting the results.
 
-As diferenças entre CAMERA estimado, CAMERA fixo, ORA e GOseq são parte do resultado e não foram usadas para selecionar um único conjunto de termos para teste. Nomes e grupos GO sobrepostos não equivalem a mecanismos independentes. Ainda falta revisão humana da interpretação funcional; nenhuma conclusão de ativação, causalidade ou validação experimental é reivindicada.
+The results retain the differences among CAMERA with estimated and fixed correlations, ORA, and GOseq. No single set of terms was selected for further testing based on those differences. Overlapping GO terms describe related annotations. Human review of functional interpretation remains pending. Claims are limited to the reported enrichment and sensitivity outcomes.
 
-## Evidência reproduzível
+## Reproducible evidence
 
-- Configuração e comandos: `research/configs/pathways.json`, `research/r/annotation.R`, `pathways.R`, `finalize_annotation.R` e `finalize_pathways.R`.
-- Testes sintéticos e QA: `research/r/test_pathway_utils.R`, `test_annotation.R` e `test_pathway_results.R` passaram na imagem `airway-research-r:e0`, com rede desabilitada.
-- Manifestos e SHA-256 por artefato: `.artifacts/research/E4/annotation-v2/manifest.json` e `.artifacts/research/E4/pathways-final/manifest.json`; resultados volumosos permanecem sob `.artifacts/research/`.
-- A tentativa de anotação original, com cabeçalho ambíguo de colunas adicionais do `GOALL`, foi preservada em `.artifacts/research/E4/annotation-attempt1/`. O snapshot final foi normalizado e testado em um diretório separado.
+- Configuration and commands are in `research/configs/pathways.json`, `research/r/annotation.R`, `pathways.R`, `finalize_annotation.R`, and `finalize_pathways.R`.
+- Synthetic checks and quality assurance tests in `research/r/test_pathway_utils.R`, `test_annotation.R`, and `test_pathway_results.R` passed offline in the `airway-research-r:e0` image.
+- Manifests and per-artifact SHA-256 hashes are in `.artifacts/research/E4/annotation-v2/manifest.json` and `.artifacts/research/E4/pathways-final/manifest.json`. Large outputs are stored under `.artifacts/research/`.
+- The original annotation attempt, which had ambiguous headings for supplementary `GOALL` columns, was preserved in `.artifacts/research/E4/annotation-attempt1/`. The final snapshot was normalized and tested in a separate directory.
