@@ -1,32 +1,38 @@
-# Decisões arquiteturais
+# Architecture decisions
 
-## ADR-01 — Contagens prontas (aceita, 2026-10-04)
-Contexto: foco em análise e avaliação reproduzível.
-Escolha: objeto airway oficial; nenhum processamento FASTQ/BAM.
-Alternativa: refazer alinhamento, com recursos e escopo maiores.
-Consequência: QC restrito à matriz; preservar proveniência e anotação histórica.
+## ADR-01 — Prepared counts (accepted, 2026-10-04)
 
-## ADR-02 — Python e referência R (aceita, 2026-10-04)
-Escolha: PyDESeq2 0.5.4 na CLI; DESeq2 em imagem separada.
-Alternativa: um único backend, sem confronto entre implementações.
-Consequência: versões e opções explícitas; concordância não prova independência conceitual dos métodos.
+- **Context** — The project focuses on reproducible analysis and evaluation.
+- **Decision** — Use the official airway object and start from the count matrix.
+- **Alternative** — Repeat read alignment, which would require more resources and a larger scope.
+- **Consequence** — Limit QC to the count matrix and preserve provenance and historical annotation.
 
-## ADR-03 — Modelo pareado (aceita, 2026-10-04)
-Escolha: ~ donor + condition; treated/control, quatro pares.
-Alternativa: ignorar doador, confundindo a variabilidade biológica.
-Consequência: exigir posto completo, oito amostras e pares íntegros.
+## ADR-02 — Python pipeline and R reference (accepted, 2026-10-04)
 
-## ADR-04 — CLI e arquivos (aceita, 2026-10-04)
-Escolha: Python, arquivos locais e Docker, sem API, banco ou frontend.
-Alternativa: aplicação web, desnecessária para a pergunta científica.
-Consequência: interface reproduzível; diretórios de saída exclusivos.
+- **Decision** — Use PyDESeq2 0.5.4 in the CLI and DESeq2 in a separate image.
+- **Alternative** — Use a single backend without comparing implementations.
+- **Consequence** — Record versions and options explicitly. Agreement between implementations leaves the methods' conceptual independence unestablished.
 
-## ADR-05 — Avaliação demonstrativa (aceita, 2026-10-04)
-Escolha: runner offline, grader determinístico de 85 pontos e revisão humana de 15.
-Alternativa: LLM juiz ou avaliação apenas por declarações do participante.
-Consequência: separar gold; artefatos não provam por si só autoria nem método; revisão do código permanece necessária.
+## ADR-03 — Paired model (accepted, 2026-10-04)
 
-## ADR-06 — Preparação online e execução offline (aceita, 2026-10-04)
-Escolha: adquirir e fixar imagens/dados uma vez, executar sem rede.
-Alternativa: downloads durante a análise.
-Consequência: registrar hashes, versões e imagem; validar termos antes de redistribuir dados.
+- **Decision** — Use `~ donor + condition` for the treated versus control contrast across four pairs.
+- **Alternative** — Omit the donor effect and confound biological variability.
+- **Consequence** — Require full rank, eight samples, and complete pairs.
+
+## ADR-04 — CLI and files (accepted, 2026-10-04)
+
+- **Decision** — Use a Python CLI, local files, and Docker.
+- **Alternative** — Add a web application with an API, database, and frontend. The scientific question requires only the file-based workflow.
+- **Consequence** — Provide a reproducible interface and exclusive output directories.
+
+## ADR-05 — Demonstrative evaluation (accepted, 2026-10-04)
+
+- **Decision** — Use an offline runner, a deterministic grader worth 85 points, and human review worth 15.
+- **Alternative** — Use an LLM judge or rely on participants' own claims.
+- **Consequence** — Keep evaluator reference outputs separate. Code review remains necessary to establish authorship and method beyond the submitted artifacts.
+
+## ADR-06 — Online preparation and offline execution (accepted, 2026-10-04)
+
+- **Decision** — Obtain and pin images and data once, then run without network access.
+- **Alternative** — Download dependencies or data during analysis.
+- **Consequence** — Record hashes, versions, and the image, and verify the terms before redistributing data.

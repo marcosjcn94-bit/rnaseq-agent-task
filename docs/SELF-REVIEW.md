@@ -1,21 +1,22 @@
-# Revisão técnica do executor — 2026-10-04
+# Technical self-review by the executing agent — 2026-10-04
 
-Revisão separada da implementação, feita pelo mesmo agente conforme o plano de execução única. Não constitui revisão externa ou independente de software.
+The same agent conducted this review separately from implementation, as specified in the single-agent execution plan. This is a self-review of the software.
 
-Conferidos: alinhamento com a especificação, desenho/contraste, propagação de warnings, validação antes do ajuste, integridade dos dados, isolamento dos mounts/gold, recibos fora das saídas, limites, tratamento de falhas, documentação, licenças e testes relevantes.
+The review covered specification alignment, design and contrast, warning propagation, validation before fitting, data integrity, isolation of mounts and evaluator reference outputs, receipts stored outside submission outputs, resource bounds, failure handling, documentation, licensing, and relevant tests.
 
-Correções provenientes da revisão:
-- preservar nomes de índices e evitar ambiguidade entre índice e coluna gene_id;
-- preservar hashes no checkout Windows com .gitattributes;
-- registrar warnings científicos em vez de descartá-los;
-- tratar correlação/PCA indefinida em matriz constante;
-- rejeitar symlinks e limitar volume de saída do participante;
-- vincular gold ao hash da tabela validada e conferir seus artefatos;
-- conferir hashes da tabela/resumo antes de preparar gold;
-- verificar CLI do runner, saída não zero e falhas reais em Docker.
+Corrections made during review:
 
-Evidências: 46 testes offline no equivalente local da CI; pip check sem inconsistências; duas tabelas Python idênticas; referência R repetida na imagem com lock; ensaios correto/invertido/sem doador/falha; quatro figuras inspecionadas; diff --check e busca por placeholders/segredos sem achados.
+- Preserved index names to avoid ambiguity between the index and the `gene_id` column.
+- Preserved hashes on Windows checkout using `.gitattributes`.
+- Recorded scientific warnings.
+- Handled undefined correlation and PCA for constant matrices.
+- Rejected symlinks and limited participant output size.
+- Bound evaluator reference outputs to the validated table hash and verified the referenced artifacts.
+- Checked table and summary hashes before preparing the evaluator reference outputs.
+- Verified the runner CLI, nonzero exits, and actual failure cases in Docker.
 
-Limites reconhecidos: R/Python não produzem estatísticas idênticas; ambiente R verifica versões mas não restaura automaticamente tarballs antigos; imagem Docker oferece isolamento básico; dados conhecidos permitem memorização; flags de revisão humana não provam identidade do revisor e devem ser preenchidas pelo avaliador responsável.
+Evidence included 46 offline tests in the local CI equivalent, a clean `pip check`, two identical Python tables, a repeated R reference run in the locked image, correct/reversed/unpaired/failure rehearsals, visual inspection of all four figures, and `git diff --check` and placeholder/secret searches without findings.
 
-Fora do escopo, por regra explícita do plano: frontend/API/banco/cloud, FASTQ/BAM, enrichment, segundo dataset, treinamento e revisão por subagentes. CI remota e publicação dependem do push autorizado. Capacidade do usuário para explicar as decisões depende do ensaio humano.
+The review recorded several limits. Python and R statistics differ. The R environment verifies versions and leaves old tarball restoration to separate setup. Docker provides basic isolation. Known data allow memorization. The evaluator is responsible for completing the human-review flags. Reviewer identity is self-reported.
+
+The MVP plan explicitly excluded a frontend, an API, a database, cloud infrastructure, FASTQ/BAM, enrichment, a second dataset, training, and subagent review. At this review snapshot, remote CI and publication depended on authorization to push. The user still had to demonstrate their ability to explain the decisions through the rehearsal.

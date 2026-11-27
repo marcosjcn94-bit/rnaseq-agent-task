@@ -1,0 +1,24 @@
+# Continuity snapshot — 2026-10-04
+
+- **Goal** — Reproduce the airway reanalysis and build an evaluable scientific task.
+- **Approved scope** — Option 3, with no deadline, one agent, and manual control over pushes.
+- **Status at this snapshot** — The local MVP was implemented and validated. Publication, human review, and the user's rehearsal were pending.
+- **GitHub** — The public repository was `marcosjcn94-bit/rnaseq-agent-task`. ADMIN access was verified.
+- **Git** — Branch `implementation`, preparation commit `dad52a8`, implementation commit `18c2da5`.
+- **Dataset** — Official airway 1.30.0, with 63,677 genes, eight samples, and four pairs without albuterol.
+- **Method** — PyDESeq2 0.5.4 with `~ donor + condition`, treated versus control, and parameters in `config.json`.
+- **Results** — 16,139 retained genes. Python found 3,879 significant genes (2,104 up and 1,775 down) and 957 exploratory highlights.
+- **Reference** — R 4.5.2 and DESeq2 1.50.2 found 4,081 significant genes.
+- **Acceptance check** — Passed. Log2FC Spearman correlation was 0.9999944. Sign agreement was 100% for 852 strong genes.
+- **Limits** — 308 classifications differed and R reported 313 missing adjusted p-values. A difference in dispersion algorithms at up to three degrees of freedom was confirmed. Its contribution remains unquantified.
+- **Reproduction** — Two identical Python tables. Runs took 122.29 and 129.84 seconds. Parent-process peak memory was 327.03 and 329.90 MiB.
+- **Checks** — 46 offline tests and `pip check` passed. Windows checkout preserved the hashes.
+- **Runner** — Offline, non-root, with read-only root, input, and source, 2 CPUs, 4 GiB, 128 processes, and a 30-minute limit. Reference outputs stayed separate.
+- **Rehearsal** — The correct submission earned 85 automatic points and awaited human review. The unpaired and reversed submissions were rejected, and the deliberate failure was detected.
+- **Resolved issues** — pandas indexes, JSON with NaN, warning handling, Windows newlines and hashes, and evaluator reference integrity.
+- **Local images** — `rnaseq-pipeline:validated` (frozen analysis), `rnaseq-ci:verified` (final tests), `rnaseq-participant:validated`, and `rnaseq-reference:validated`.
+- **Complete local outputs** — `results/run-1`, `results/run-2`, and `results/submission-*`. Evaluator reference outputs lived under `benchmark/gold`. Git ignored all of these paths.
+- **Publishable evidence** — `evidence/`, `reference/comparison.json`, `reference/VALIDATION.md`, and `benchmark/REHEARSAL.md`.
+- **Tooling** — Used execution, testing, and verification skills. The runtime has no MCP dependency.
+- **Next action at this snapshot** — Obtain publication authorization, then run remote CI, conduct human review, and rehearse the five questions.
+- **Resume from** — [Execution plan](PLAN.md), [architecture decisions](ADR.md), [README](README.md), and [interview preparation](docs/INTERVIEW.md). Reuse the existing inputs and environment when available.

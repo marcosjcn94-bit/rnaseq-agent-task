@@ -1,39 +1,39 @@
-# Preparação para entrevista
+# Interview preparation
 
-Este projeto é uma reanálise computacional de um conjunto público conhecido e uma tarefa de bioinformática executável em ambiente isolado. Foi desenvolvido com assistência do Codex. Não é uma descoberta nova, estudo clínico nem avaliação de desempenho de um agente independente.
+This Codex-assisted project uses a known public dataset for computational reanalysis and packages an executable bioinformatics task in an isolated environment. Its scope is reproduction and task evaluation. Claims about biological discovery, clinical findings, or independent agent performance require additional evidence.
 
-## Cinco respostas curtas
+## Five short answers
 
-### 1. Por que usar o desenho pareado e o que mudaria sem `donor`?
+### 1. Why use the paired design, and what changes without `donor`?
 
-Cada um dos quatro doadores tem uma amostra controle e uma tratada. O modelo `~ donor + condition` compara as condições controlando diferenças basais entre doadores. Sem `donor`, o modelo ignora esse pareamento e pode estimar de forma diferente a variabilidade e a incerteza do efeito. O desenho tem oito amostras, posto cinco e três graus de liberdade residuais.
+Each of the four donors has a control sample and a treated sample. The model `~ donor + condition` compares conditions while controlling for baseline differences between donors. Omitting `donor` removes that pairing from the model and can change estimates of variability and effect uncertainty. The design has eight samples, rank five, and three residual degrees of freedom.
 
-### 2. Por que TPM não substitui estas contagens?
+### 2. Why does TPM fail to substitute for these counts?
 
-O DESeq2/PyDESeq2 modela contagens brutas inteiras e estima fatores de tamanho para comparar as amostras. TPM e FPKM já foram transformados e ajustados por comprimento e composição; não são entradas equivalentes para este modelo. Também verifico no manifesto que os dados fornecidos são contagens brutas.
+DESeq2 and PyDESeq2 model raw integer counts and estimate size factors to compare samples. TPM and FPKM already incorporate transformations and adjustments for length and composition. I also verify in the manifest that the supplied data are raw counts.
 
-### 3. Como interpretar log2FC, padj e o destaque?
+### 3. How do you interpret log2FC, adjusted p-values, and the highlights?
 
-Log2FC positivo significa maior expressão no tratamento que no controle; +1 equivale a aproximadamente o dobro. `padj < 0,05` é o critério definido após ajuste Benjamini–Hochberg para testes múltiplos. Não significa que cada gene tenha 95% de probabilidade de ser verdadeiro. O destaque adicional `abs(log2FC) >= 1` é exploratório: não é um teste formal de que o efeito ultrapasse esse limiar.
+Positive log2FC indicates higher expression under treatment than under control. A value of +1 corresponds to roughly twice the expression. The threshold `padj < 0.05` applies after Benjamini–Hochberg multiple-testing adjustment. It controls the false discovery rate across tests under the method's assumptions and yields no single-gene probability of truth. The additional `abs(log2FC) >= 1` highlight is an exploratory flag applied to point estimates. A formal effect-threshold test would require a different hypothesis.
 
-### 4. Qual é a diferença entre reprodução, comparação com R e revisão humana?
+### 4. What does each check establish?
 
-Duas execuções Python com resultados idênticos demonstram reprodução nesse ambiente e nesses dados. A comparação com R/DESeq2 confere uma implementação separada: os efeitos tiveram Spearman 0,999994 e as direções coincidiram em 852 genes fortes, mas 308 decisões de significância divergiram. A revisão humana avalia se código, método, figuras e interpretação fazem sentido. Nenhuma dessas evidências, isoladamente, prova uma descoberta biológica.
+Identical outputs from two Python runs demonstrate reproduction with those data and that environment. The R/DESeq2 comparison checks a separate implementation. Log2FC Spearman correlation was 0.999994 and directions matched for 852 strong genes. The significance decisions differed for 308 genes. Human review checks whether the code, method, figures, and interpretation are sound. Establishing a biological discovery would require evidence beyond any one of those checks.
 
-### 5. Como o runner protege dados e solução de referência?
+### 5. How does the runner protect inputs and the reference solution?
 
-A submissão executa em Docker sem rede e como usuário não privilegiado, com sistema de arquivos raiz, entradas e código somente leitura, limites de recursos e sem socket Docker. O gold e o avaliador ficam fora do contêiner. O avaliador registra recibos e hashes fora da saída que a submissão pode escrever.
+The submission runs in Docker without network access, as an unprivileged user, with the root filesystem, inputs, and source mounted read-only. The runner applies resource limits and gives the submission no Docker socket. The evaluator and the reference outputs stay outside the container. The evaluator records receipts and hashes outside the paths writable by the submission.
 
-## Roteiro de demonstração
+## Demonstration outline
 
-1. Mostre `config.json`, `data/manifest.json` e a fórmula/contraste.
-2. Execute os comandos do README e explique o escopo de cada figura. QC é da matriz de contagens; não houve análise de FASTQ, alinhamentos ou cobertura.
-3. Mostre a tabela da comparação Python/R e explique as 308 divergências sem atribuí-las todas a uma causa já comprovada.
-4. Mostre a reprovação das execuções com contraste invertido e sem pareamento, mais o teste de falha/isolamento.
-5. Diga explicitamente que a tarefa usa um conjunto conhecido e que a execução correta é uma verificação do avaliador, não uma medição de capacidade geral de um agente.
+1. Show `config.json`, `data/manifest.json`, the formula, and the contrast.
+2. Run the README commands and explain what each figure shows. The QC covers the count matrix. FASTQ, alignment, and coverage analysis fall outside its scope.
+3. Show the comparison table for Python and R. Explain the 308 discrepancies and identify which causes remain unresolved.
+4. Show the rejection of the reversed-contrast and unpaired runs, along with the failure and isolation test.
+5. Explain that the task uses a known dataset. The successful reference run verifies the evaluator. General agent capability would require separate measurement.
 
-## Frase defensável para currículo
+## Defensible résumé entry
 
-> Desenvolvi, com assistência de IA, uma reanálise pareada de RNA-seq com PyDESeq2, comparação computacional com R/DESeq2 e uma tarefa científica offline com execução Docker isolada, critérios determinísticos e testes adversariais.
+> Built an AI-assisted paired RNA-seq reanalysis with PyDESeq2 and a computational comparison against R/DESeq2. Packaged it as an offline scientific task with isolated Docker execution, deterministic criteria, and adversarial tests.
 
-Acrescente “revisão humana” ou “domínio demonstrado” apenas depois de realizar e documentar essas etapas.
+Add human review or demonstrated proficiency only after completing and documenting those steps.
