@@ -31,5 +31,5 @@
                                        ]
                 },
     "split":  "validation",
-    "prompt":  "Investigue discordância com LFC semelhante e padj ausente. Separe fatos observados de causas que não podem ser determinadas pelo resumo."
+    "prompt":  "Investigate discordance when log fold changes are similar and adjusted p-values are missing. Distinguish the observations from causes that cannot be determined from the summary."
 }

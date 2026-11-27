@@ -31,5 +31,5 @@
                                 ]
                 },
     "split":  "reserved",
-    "prompt":  "Avalie se efeito de condição é identificável quando condição e lote estão perfeitamente confundidos; indique o que relatar."
+    "prompt":  "Assess whether the condition effect is identifiable when condition and batch are perfectly confounded. State what should be reported."
 }

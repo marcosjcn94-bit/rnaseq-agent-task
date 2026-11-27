@@ -50,5 +50,5 @@
                     "design":  "~ donor + condition"
                 },
     "split":  "validation",
-    "prompt":  "Alinhe contagens por sample_id, identifique pares completos e diga se condição e contraste são estimáveis."
+    "prompt":  "Align the counts by sample_id, identify complete pairs, and state whether the condition effect and contrast are estimable."
 }

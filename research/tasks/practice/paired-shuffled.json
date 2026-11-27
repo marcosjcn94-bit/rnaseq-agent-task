@@ -8,5 +8,5 @@
   ],
   "counts_columns": ["S1C", "S2C", "S1T", "S2T"],
   "expected_pairs": {"D1": ["S1C", "S1T"], "D2": ["S2C", "S2T"]},
-  "prompt": "Alinhe por sample_id e explique por que ordem posicional não é contrato."
+  "prompt": "Align by sample_id and explain why positional order cannot be assumed."
 }

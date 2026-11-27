@@ -15,5 +15,5 @@
                     "pathway_test":  "competitive"
                 },
     "split":  "reserved",
-    "prompt":  "Interprete possível enriquecimento funcional com mapeamento ambíguo, correlação gênica não medida e experimento observacional. Delimite a conclusão."
+    "prompt":  "Interpret possible functional enrichment given ambiguous mappings, unmeasured gene correlation, and an observational study design. State the limits of the conclusion."
 }

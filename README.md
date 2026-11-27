@@ -2,6 +2,8 @@
 
 An independent computational reanalysis of dexamethasone-treated human airway smooth muscle cells, packaged as an offline, executable scientific task. This is a portfolio demonstration on a known dataset, not a clinical tool or a general agent benchmark.
 
+Read the [scientific report](docs/research/REPORT.md) for the Python/R comparison, donor sensitivity, pathway analyses and simulations.
+
 ## Scope and architecture
 
 Eight samples, four donor-matched control/treated pairs, without albuterol, exported from the official Bioconductor airway 1.30.0 object. A Python CLI validates raw counts and provenance, fits PyDESeq2 0.5.4, and writes tables, QC and figures. A separate R/DESeq2 1.50.2 implementation checks effect sizes and directions. An evaluator-owned Docker runner executes submissions without network access; gold and grading code stay outside the participant environment.
