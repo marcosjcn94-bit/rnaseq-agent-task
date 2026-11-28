@@ -1,22 +1,16 @@
-# Paired airway RNA-seq agent task
+# AIRWAY RNA-seq Reproducibility Study
 
-An independent computational reanalysis of dexamethasone-treated human airway smooth muscle cells, packaged as an offline, executable scientific task. This is a portfolio demonstration on a known dataset, not a clinical tool or a general agent benchmark.
+How closely do Python and R agree on the response to dexamethasone in human airway smooth muscle cells? Using four treated/control donor pairs, PyDESeq2 and DESeq2 agreed on the direction of change for **all 852 genes with strong effects in the R reference**. Across 16,139 tested genes, **308 crossed the adjusted p-value threshold in only one implementation**. The [scientific report](docs/research/REPORT.md) examines that discrepancy and what changes when one donor is left out.
 
-Read the [scientific report](docs/research/REPORT.md) for the Python/R comparison, donor sensitivity, pathway analyses and simulations.
+![Baseline PCA of eight samples labeled by donor and treatment. PC1 explains 33.4% of variance and PC2 explains 30.1%.](docs/research/figures/baseline-pca.png)
 
-## Scope and architecture
+*Exploratory sample-level QC using log-transformed normalized counts. The paired differential-expression model uses raw counts.*
 
-Eight samples, four donor-matched control/treated pairs, without albuterol, exported from the official Bioconductor airway 1.30.0 object. A Python CLI validates raw counts and provenance, fits PyDESeq2 0.5.4, and writes tables, QC and figures. A separate R/DESeq2 1.50.2 implementation checks effect sizes and directions. An evaluator-owned Docker runner executes submissions without network access; gold and grading code stay outside the participant environment.
+**Archived software:** [Zenodo v1.0.1 · DOI 10.5281/zenodo.24572737](https://doi.org/10.5281/zenodo.24572737)
 
-No frontend, API, database or cloud deployment is necessary for this file-based scientific workload. Docker is the deployment artifact.
+## Reproduce locally
 
-# ARCHITECTURE
-
-<img width="3288" height="3232" alt="airway-project-DIAGRAM-ARCHITECTURE" src="https://github.com/user-attachments/assets/f55a2369-0a98-4f09-913d-a5b4e4fcf119" />
-
-## Run on Windows / PowerShell
-
-Prerequisite: Docker Desktop with Linux containers. Preparation requires network access; analysis and tests run offline. No host Python packages, cloud account or paid model API are required.
+Run these commands from the repository root in PowerShell. Use Docker Desktop with Linux containers. Preparation requires network access; analysis and tests run offline. No host Python packages, cloud account or paid model API are required.
 
 ```powershell
 docker build --target pipeline -t rnaseq-pipeline:validated .
@@ -35,23 +29,20 @@ docker run --rm --network none --read-only --tmpfs /tmp:rw,nosuid,size=512m rnas
 docker run --rm --network none rnaseq-pipeline:validated pip check
 ```
 
-## Fixed scientific method
+## Research materials
 
-Raw integer counts only; align samples by ID and require four complete donor pairs. Prefilter >=10 counts in >=4 samples. Fit ~ donor + condition, treated/control contrast, ratio size factors, parametric dispersion fit, two-sided Wald test of LFC=0, BH adjustment at alpha .05, explicit Cook's/independent-filter settings, no LFC shrinkage. Positive log2FC means higher expression after treatment.
+- [Scientific report](docs/research/REPORT.md) and [prespecified research protocol](docs/research/PROTOCOL.md)
+- [Input provenance](data/manifest.json), [fixed model configuration](config.json) and [independent R validation](reference/VALIDATION.md)
+- [Python/R comparison](reference/comparison.json), [reproduction evidence](evidence/reproduction.json) and [research workflows](research/README.md)
+- [Offline scientific task](benchmark/TASK.md), [grading rubric](benchmark/RUBRIC.md) and [rehearsal results](benchmark/REHEARSAL.md)
+- [Code license](LICENSE) and [upstream data attribution](data/LICENSE-NOTES.md)
 
-Significant means padj <.05. The additional abs(log2FC)>=1 highlight is exploratory, not a test of an effect exceeding that threshold. Missing statistics remain missing with a reason.
+<details>
+<summary>Architecture, independent R reproduction and evaluator commands</summary>
 
-QC covers count matrices only. PCA uses log2(normalized counts+1) over up to 500 highest-variance genes; this is not VST. The heatmap selects up to 20 lowest-padj genes and applies per-gene z-scores. Volcano displays adjusted p-values, capped at 50 on the -log10 axis. No sample was excluded based on the PCA.
+<img width="3288" height="3232" alt="airway-project-DIAGRAM-ARCHITECTURE" src="https://github.com/user-attachments/assets/f55a2369-0a98-4f09-913d-a5b4e4fcf119" />
 
-## Results and validation
-
-The final validated analysis retained 16,139 of 63,677 genes; Python found 3,879 significant genes (2,104 up / 1,775 down), with 957 exploratory highlights. The independent R run found 4,081 significant genes. Effect-size Spearman was 0.9999944, and direction agreement was 100% over 852 strong reference genes.
-
-These are concordant effect estimates, **not identical statistical results**: 308 significance classifications differ, and R has 313 adjusted p-values missing through independent filtering. See [reference/VALIDATION.md](reference/VALIDATION.md), [comparison.json](reference/comparison.json) and [docs/INTERPRETATION.md](docs/INTERPRETATION.md). Two final offline runs returned identical tables (also within rtol=1e-6, atol=1e-8) in 122.29 and 129.84 seconds; parent peak RSS was 327.03 and 329.90 MiB. These timings reflect this local machine and concurrent workloads. Final measured reproduction evidence is in [evidence/](evidence/).
-
-Only four biological replicates and three residual degrees of freedom are available. The installed Python implementation warns about unstable dispersion-prior estimation; the warning is retained. The gold is fixed to the Python environment after the predefined R effect/direction gate passes.
-
-## Independent reference
+### Independent reference
 
 ```powershell
 docker build -f reference/Dockerfile -t rnaseq-reference:validated reference
@@ -63,7 +54,7 @@ R preparation checks every package against reference/packages.lock.csv. It rejec
 
 data/manifest.json records official source URLs, export versions, sample mapping and SHA-256 hashes. reference/export_airway.R documents the one-time acquisition. .gitattributes preserves LF bytes across Windows Git checkouts so hashes remain valid. Annotation is historical Ensembl 75 / GRCh37.p13; gene IDs are not collapsed to symbols.
 
-## Demonstrative task and evaluator
+### Demonstrative task and evaluator
 
 Read [benchmark/TASK.md](benchmark/TASK.md), [SOURCES.md](benchmark/SOURCES.md) and [RUBRIC.md](benchmark/RUBRIC.md). Participants write analyze.py and receive only data, instructions, configuration and installed libraries.
 
@@ -85,3 +76,4 @@ The runner enforces 2 CPUs, 4 GiB, 128 processes, 30-minute timeout, no network,
 
 Automatic grading totals 85 points; human review adds up to 15. A score of 85 alone is pending review, not approved. Human review checks source, method, figures and biological claims. A copied reference solution rehearses the mechanics; it is not a measured AI-agent attempt. Known public data can be memorized; future generalization requires unseen tasks.
 
+</details>
